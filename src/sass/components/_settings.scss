@@ -1,0 +1,71 @@
+.settings {
+  .window-wrapper {
+    position: absolute;
+    top: 5vh;
+    left: 5vw;
+    width: 90vw;
+    height: 90vh;
+    background-color: lighten($dark, 10%);
+    border: 5px solid $gray;
+    .settings-options-container {
+      height: 2rem;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: $gray;
+      .settings-options-wrapper {
+        padding-bottom: 5px;
+        width: 300px;
+        display: flex;
+        justify-content: space-between;
+        .settings-option {
+          font-size: 1.5rem;
+          background-color: $gray;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          &.selected {
+            text-shadow: 1px 0px 0 $lightgreen, -1px 0px 0 $lightgreen,
+              0px -1px 0 $lightgreen, 0px 1px 0 $lightgreen,
+              0px 2px 0 $lightgreen, 0px 3px 0 $lightgreen,
+              0px 4px 0 $lightgreen;
+          }
+        }
+      }
+      .close-button-wrapper {
+        position: absolute;
+        top: 0.125rem;
+        right: 0;
+        .settings-close-button {
+          background: none;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          .close-icon {
+            color: $black;
+            font-size: 1rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+.settings-button {
+  position: absolute;
+  top: 0.25rem;
+  right: 0.25rem;
+  color: $white;
+  background-color: $dark;
+  border: none;
+  .settings-icon {
+    font-size: 1.5rem;
+    transition: 0.3s ease-in-out;
+    &:hover {
+      cursor: pointer;
+      color: darken($gray, 5%);
+    }
+  }
+}
