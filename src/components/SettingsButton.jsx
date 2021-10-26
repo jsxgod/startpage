@@ -6,8 +6,11 @@ import {
 
 const SettingsButton = ({ openSettings }) => {
   return (
-    <button className="settings-button" onClick={() => openSettings(true)}>
-      <SettingsIcon className="settings-icon" />
+    <button className="settings-button">
+      <SettingsIcon
+        className="settings-icon"
+        onClick={() => openSettings(true)}
+      />
     </button>
   );
 };
