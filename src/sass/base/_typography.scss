@@ -1,0 +1,23 @@
+@font-face {
+  font-family: MontSerratBlack;
+  src: url("../../fonts/MontserratBlack-3zOvZ.ttf");
+}
+@font-face {
+  font-family: MontSerratExtralight;
+  src: url("../../fonts/MontserratExtralight-GOJpy.otf");
+}
+@font-face {
+  font-family: MontSerrat;
+  src: url("../../fonts/MontserratRegular-RpK6l.otf");
+}
+
+body {
+  font-family: MontSerrat;
+}
+
+.day-wrapper,
+.date-wrapper,
+.time-wrapper {
+  color: $white;
+  font-family: MontSerratBlack;
+}
