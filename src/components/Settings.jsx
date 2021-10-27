@@ -9,6 +9,10 @@ const Settings = ({ opened, openSettings }) => {
   const settings = ["Links", "Theme", "Searchbar"];
   const [selectedSetting, setSelectedSetting] = useState(0);
 
+  const handleSettingClick = (event) => {
+    setSelectedSetting(event.target.getAttribute("data-index"));
+  };
+
   return (
     <>
       {opened && (
@@ -16,9 +20,19 @@ const Settings = ({ opened, openSettings }) => {
           <div className="window-wrapper">
             <div className="settings-options-container">
               <div className="settings-options-wrapper">
-                <div className="settings-option">Links</div>
-                <div className="settings-option">Theme</div>
-                <div className="settings-option">Searchbar</div>
+                <div className="settings-title">Settings</div>
+                {settings.map((setting, i) => (
+                  <div
+                    key={i}
+                    data-index={i}
+                    className={`settings-option ${
+                      selectedSetting === i ? "selected" : ""
+                    }`}
+                    onClick={() => setSelectedSetting(i)}
+                  >
+                    {setting}
+                  </div>
+                ))}
               </div>
               <div className="close-button-wrapper">
                 <CloseButton openSettings={openSettings} />
