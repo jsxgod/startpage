@@ -2,14 +2,11 @@ import React, { useEffect, useState } from "react";
 import {
   BsFillBookmarkPlusFill,
   BsPlusCircleFill,
-  BsCheckCircleFill,
-  BsTrashFill,
-  BsPencilSquare,
   BsExclamationCircleFill,
 } from "react-icons/bs";
 import { RiCloseCircleFill } from "react-icons/ri";
-import { MdDragHandle } from "react-icons/md";
 import availableGroups from "../data/todo-groups";
+import { IconButton, Todo } from ".";
 
 const ToDoList = () => {
   const [todoInput, setTodoInput] = useState("");
@@ -76,7 +73,7 @@ const ToDoList = () => {
           onChange={(event) => setTodoInput(event.target.value)}
         ></input>
         <div className="todo-button-wrapper select-group">
-          <button
+          <IconButton
             className={`icon ${
               alertGroup ? "group-select-alert" : "group-select"
             }`}
@@ -87,13 +84,13 @@ const ToDoList = () => {
             ) : (
               <BsFillBookmarkPlusFill />
             )}
-          </button>
+          </IconButton>
           {groupSelectionOpened && (
             <div className="group-selection-wrapper">
               <div className="group-selection-container">
                 {groups.slice(1).map((g) => (
                   <div className="group-item-wrapper">
-                    <button
+                    <IconButton
                       className={`icon ${
                         selectedInputGroup.name === g.name ? "selected" : ""
                       }`}
@@ -103,7 +100,7 @@ const ToDoList = () => {
                       }}
                     >
                       {g.icon}
-                    </button>
+                    </IconButton>
                   </div>
                 ))}
                 <button
@@ -119,34 +116,34 @@ const ToDoList = () => {
           )}
         </div>
         <div className="todo-button-wrapper add" onClick={handleAddTodo}>
-          <button className="icon add">
+          <IconButton className="icon add">
             <BsPlusCircleFill />
-          </button>
+          </IconButton>
         </div>
         <div
           className="todo-button-wrapper important"
           onClick={() => setImportantInput(!importantInput)}
         >
-          <button
+          <IconButton
             className={`icon ? ${
               importantInput ? "important-button-selected" : "important-button"
             }`}
           >
             <BsExclamationCircleFill />
-          </button>
+          </IconButton>
         </div>
       </div>
       <div className="groups-sidebar">
         {groups.map((g) => (
           <div className="group-sidebar-option-wrapper">
             <div className="group-sidebar-option">
-              <button
+              <IconButton
                 className="icon"
                 style={{ color: g.color }}
                 onClick={() => handleSelectGroup(g)}
               >
                 {g.icon}
-              </button>
+              </IconButton>
             </div>
           </div>
         ))}
@@ -158,23 +155,7 @@ const ToDoList = () => {
             : todos.filter((t) => t.group.name === selectedGroup.name)
           : todos
         ).map((t, i) => (
-          <div className="todo-row">
-            <div className="todo-description-wrapper">{t.description}</div>
-            <div className="todo-actions-container">
-              <button className="icon done">
-                <BsCheckCircleFill />
-              </button>
-              <button className="icon remove">
-                <BsTrashFill />
-              </button>
-              <button className="icon edit">
-                <BsPencilSquare />
-              </button>
-              <button className="icon drag">
-                <MdDragHandle />
-              </button>
-            </div>
-          </div>
+          <Todo data={t} />
         ))}
       </div>
     </div>
