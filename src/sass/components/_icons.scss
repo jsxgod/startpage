@@ -1,11 +1,10 @@
 .icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: 2rem;
   background-color: inherit;
   border: none;
-  transition: 0.2s ease-in-out;
-  &:hover {
-    scale: 1.1;
-  }
   // todo input related
   &.group-select {
     color: $purple;
