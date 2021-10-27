@@ -53,10 +53,6 @@
         grid-area: select-group;
         position: relative;
         color: $purple;
-        transition: 0.2s ease-in-out;
-        &:hover {
-          scale: 1.1;
-        }
         .group-selection-wrapper {
           position: absolute;
           z-index: 50;
