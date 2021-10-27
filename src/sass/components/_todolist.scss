@@ -1,0 +1,149 @@
+.todo-list {
+  grid-area: todo;
+  position: relative;
+  display: grid;
+  grid-template-areas: "todo-input todo-input" "todo-content todo-selection";
+  grid-template-rows: 1fr 9fr;
+  grid-template-columns: 9fr 1fr;
+  border: 1px solid $white;
+  .todo-input-wrapper {
+    grid-area: todo-input;
+    display: grid;
+    grid-template-areas: "input important-button select-group add";
+    grid-template-columns: 7fr 1fr 1fr 1fr;
+    .todo-input {
+      -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+      -moz-box-sizing: border-box; /* Firefox, other Gecko */
+      box-sizing: border-box; /* Opera/IE 8+ */
+      grid-area: input;
+      background-color: inherit;
+      font-size: 2rem;
+      color: $white;
+      font-family: MontSerratBlack;
+      padding: 1rem;
+      padding-left: 0;
+      margin: 0 2rem;
+      border: none;
+      border-bottom: 1px solid $dark;
+      transition: border-bottom 0.2s ease-in-out;
+      &:focus {
+        outline: none;
+        border-bottom: 1px solid $white;
+      }
+      &::placeholder {
+        color: $gray;
+      }
+      &.alert {
+        border-bottom: 1px solid $red;
+      }
+    }
+    .todo-button-wrapper {
+      padding: 1rem;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 2rem;
+      &.add {
+        grid-area: add;
+        color: #00c853;
+      }
+      &.select-group {
+        grid-area: select-group;
+        position: relative;
+        color: $purple;
+        transition: 0.2s ease-in-out;
+        &:hover {
+          scale: 1.1;
+        }
+        .group-selection-wrapper {
+          position: absolute;
+          z-index: 50;
+          top: -20px;
+          left: -50px;
+          width: calc(100% + 40px);
+          .group-selection-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+            padding: 1rem;
+            background-color: $white;
+            display: grid;
+            .group-item-wrapper {
+              color: $black;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              width: 3.5rem;
+              height: 3.5rem;
+
+              border: none;
+            }
+            .group-selection-close-button {
+              position: absolute;
+              font-size: 1rem;
+              top: 5px;
+              right: 5px;
+              border: none;
+              background-color: transparent;
+            }
+          }
+        }
+      }
+    }
+  }
+  .groups-sidebar {
+    grid-area: todo-selection;
+    display: flex;
+    flex-direction: column;
+    justify-content: top;
+    align-items: right;
+    padding: 1rem 0;
+    .group-sidebar-option-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 1rem;
+      .group-sidebar-option {
+        font-size: 2rem;
+        color: $purple;
+      }
+    }
+  }
+  .todos-container {
+    grid-area: todo-content;
+    .todo-row {
+      display: flex;
+      justify-content: left;
+      align-items: center;
+      padding: 1rem;
+      min-height: 100px;
+      .todo-description-wrapper {
+        background-color: $white;
+        color: $black;
+        width: 70%;
+        max-height: 100px;
+        display: flex;
+        padding: 8px;
+        border-radius: 10px;
+        border: 10px solid $white;
+      }
+
+      .todo-actions-container {
+        width: 30%;
+        display: flex;
+        justify-content: space-evenly;
+        .todo-action-button {
+        }
+      }
+    }
+  }
+}
+
+button {
+  &:hover {
+    cursor: pointer;
+  }
+}

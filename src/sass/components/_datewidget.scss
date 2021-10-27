@@ -1,0 +1,19 @@
+.date-widget-container {
+  display: grid;
+  row-gap: 1rem;
+  width: max-content;
+  .day-wrapper {
+    font-size: 5rem;
+  }
+  .date-wrapper {
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+  }
+  .time-wrapper {
+    width: 100%;
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+  }
+}
