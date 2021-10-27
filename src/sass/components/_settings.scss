@@ -5,32 +5,40 @@
     left: 5vw;
     width: 90vw;
     height: 90vh;
-    background-color: lighten($dark, 10%);
-    border: 5px solid $gray;
+    background-color: $dark;
+    border: 5px solid $white;
+    border-radius: 10px;
+    z-index: 100;
     .settings-options-container {
       height: 2rem;
       position: relative;
       display: flex;
       justify-content: center;
       align-items: center;
-      background-color: $gray;
+      background-color: $white;
+      .settings-title {
+        font-size: 1.1rem;
+        position: absolute;
+        left: 0.25rem;
+        top: 0.25rem;
+      }
       .settings-options-wrapper {
         padding-bottom: 5px;
         width: 300px;
         display: flex;
         justify-content: space-between;
         .settings-option {
-          font-size: 1.5rem;
-          background-color: $gray;
+          font-size: 1.2rem;
+          background-color: $white;
           display: flex;
           justify-content: center;
           align-items: center;
-
           &.selected {
-            text-shadow: 1px 0px 0 $lightgreen, -1px 0px 0 $lightgreen,
-              0px -1px 0 $lightgreen, 0px 1px 0 $lightgreen,
-              0px 2px 0 $lightgreen, 0px 3px 0 $lightgreen,
-              0px 4px 0 $lightgreen;
+            color: $red;
+            font-family: MontSerratBlack;
+          }
+          &:hover {
+            cursor: pointer;
           }
         }
       }
@@ -43,29 +51,13 @@
           display: flex;
           justify-content: center;
           align-items: center;
+          border-radius: 10px;
           .close-icon {
             color: $black;
             font-size: 1rem;
           }
         }
       }
-    }
-  }
-}
-
-.settings-button {
-  position: absolute;
-  top: 0.25rem;
-  right: 0.25rem;
-  color: $white;
-  background-color: $dark;
-  border: none;
-  .settings-icon {
-    font-size: 1.5rem;
-    transition: 0.3s ease-in-out;
-    &:hover {
-      cursor: pointer;
-      color: darken($gray, 5%);
     }
   }
 }
