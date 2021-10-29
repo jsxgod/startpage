@@ -6,3 +6,4 @@ export { default as DateWidget } from "./DateWidget";
 export { default as ToDoList } from "./ToDoList";
 export { default as IconButton } from "./IconButton";
 export { default as Todo } from "./Todo";
+export { default as UpdateTodo } from "./UpdateTodo";
