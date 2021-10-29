@@ -1,39 +1,77 @@
-import React, { useState } from "react";
 import { IconButton } from ".";
 
 import {
   BsCheckCircleFill,
+  BsFillXCircleFill,
   BsTrashFill,
   BsPencilSquare,
   BsExclamationCircleFill,
 } from "react-icons/bs";
 
-const Todo = ({ data }) => {
-  const [description, setDescription] = useState(data.description);
-  const [important, setImportant] = useState(data.important);
-
+const Todo = ({
+  todo,
+  handleChangeImportant,
+  handleCompleteTodo,
+  handleRemoveTodo,
+  handleRemoveTodoCompletely,
+  handleEditTodo,
+  history,
+}) => {
   return (
     <div className="todo-row">
-      <div className="todo-description-wrapper">{description}</div>
-      <div className="todo-actions-container">
-        <IconButton className="icon done">
-          <BsCheckCircleFill />
-        </IconButton>
-        <IconButton className="icon remove">
-          <BsTrashFill />
-        </IconButton>
-        <IconButton className="icon edit">
-          <BsPencilSquare />
-        </IconButton>
-        <IconButton
-          className={`icon ? ${
-            important ? "important-button-selected" : "important-button"
-          }`}
-          onClick={() => setImportant(!important)}
-        >
-          <BsExclamationCircleFill />
-        </IconButton>
+      <div
+        className="todo-description-wrapper"
+        style={{
+          backgroundColor: "#131313",
+          outline: history
+            ? history === "completed"
+              ? "5px solid #00c853"
+              : "5px solid #cf291d"
+            : `5px solid ${todo.group.color}`,
+        }}
+      >
+        {todo.description}
       </div>
+      {!history && (
+        <div className="todo-actions-container">
+          <IconButton
+            className="icon done"
+            onClick={() => handleCompleteTodo(todo)}
+          >
+            <BsCheckCircleFill />
+          </IconButton>
+          <IconButton
+            className="icon remove"
+            onClick={() => handleRemoveTodo(todo)}
+          >
+            <BsFillXCircleFill />
+          </IconButton>
+          <IconButton
+            className="icon edit"
+            onClick={() => handleEditTodo(todo)}
+          >
+            <BsPencilSquare />
+          </IconButton>
+          <IconButton
+            className={`icon ? ${
+              todo.important ? "important-button-selected" : "important-button"
+            }`}
+            onClick={() => handleChangeImportant(todo)}
+          >
+            <BsExclamationCircleFill />
+          </IconButton>
+        </div>
+      )}
+      {history && (
+        <div className="history-todo-actions-container">
+          <IconButton
+            className="icon remove"
+            onClick={() => handleRemoveTodoCompletely(todo)}
+          >
+            <BsTrashFill />
+          </IconButton>
+        </div>
+      )}
     </div>
   );
 };
