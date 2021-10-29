@@ -6,7 +6,7 @@ import {
 } from "react-icons/bs";
 import { RiCloseCircleFill } from "react-icons/ri";
 import availableGroups from "../data/todo-groups";
-import { IconButton, Todo } from ".";
+import { IconButton, Todo, UpdateTodo } from ".";
 
 const ToDoList = () => {
   const [todoInput, setTodoInput] = useState("");
@@ -17,13 +17,33 @@ const ToDoList = () => {
   const [alertInput, setAlertInput] = useState(false);
   const [alertGroup, setAlertGroup] = useState(false);
 
-  const groups = availableGroups;
-  const [todos, setTodos] = useState([]);
+  const [groups, setGroups] = useState(availableGroups.bookmarks);
+  const [historyGroups, setHistoryGroups] = useState(availableGroups.history);
 
-  const checkDuplicate = (passedTodos, todo) => {
-    return (
-      passedTodos.filter((t) => t.description === todo.description).length !== 0
-    );
+  const [todos, setTodos] = useState(() => {
+    const localTodoData = localStorage.getItem("todos");
+    return localTodoData ? JSON.parse(localTodoData) : [];
+  });
+  const [completedTodos, setCompletedTodos] = useState(() => {
+    const localCompletedTodoData = localStorage.getItem("completedTodos");
+    return localCompletedTodoData ? JSON.parse(localCompletedTodoData) : [];
+  });
+  const [removedTodos, setRemovedTodos] = useState(() => {
+    const localRemovedTodoData = localStorage.getItem("removedTodos");
+    return localRemovedTodoData ? JSON.parse(localRemovedTodoData) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+    localStorage.setItem("completedTodos", JSON.stringify(completedTodos));
+    localStorage.setItem("removedTodos", JSON.stringify(removedTodos));
+  }, [todos, completedTodos, removedTodos]);
+
+  const checkDuplicate = (key) => {
+    return todos.filter((t) => t.key === key).length !== 0;
+  };
+  const checkDuplicateDescription = (description) => {
+    return todos.filter((t) => t.description === description).length !== 0;
   };
 
   const handleAddTodo = async () => {
@@ -33,14 +53,18 @@ const ToDoList = () => {
       description: todoInput.trim(),
       group: group,
       important: importantInput,
+      history: "",
+      editMode: false,
     };
     if (todo.description !== "") {
       setAlertInput(false);
       if (Object.keys(group).length !== 0) {
-        const isDuplicate = await checkDuplicate(todos, todo);
+        const isDuplicate = await checkDuplicate(todo.key);
         if (!isDuplicate) {
           setTodos((todos) => [...todos, todo]);
-          setSelectedGroup(group);
+          if (!group.selected) {
+            handleSelectGroup(group);
+          }
           setSelectedInputGroup({});
           setTodoInput("");
           setGroupSelectionOpened(false);
@@ -56,10 +80,106 @@ const ToDoList = () => {
     }
   };
 
+  const findTodoIndex = (todo) => {
+    return todos.findIndex((obj) => obj.key === todo.key);
+  };
+  const findGroupIndex = (group, groups) => {
+    return groups.findIndex((obj) => obj.name === group.name);
+  };
+
+  const handleCompleteTodo = (todo) => {
+    todo.history = "completed";
+    setCompletedTodos((completedTodos) => [...completedTodos, todo]);
+    setTodos((todos) => [...todos.filter((t) => t.key !== todo.key)]);
+  };
+
+  const handleRemoveTodo = (todo) => {
+    todo.history = "removed";
+    setRemovedTodos((removedTodos) => [...removedTodos, todo]);
+    setTodos((todos) => [...todos.filter((t) => t.key !== todo.key)]);
+  };
+
+  const handleRemoveTodoCompletely = (todo) => {
+    if (todo.history === "removed") {
+      setRemovedTodos((removedTodos) => [
+        ...removedTodos.filter((t) => t.key !== todo.key),
+      ]);
+    } else if (todo.history === "completed") {
+      setCompletedTodos((completedTodos) => [
+        ...completedTodos.filter((t) => t.key !== todo.key),
+      ]);
+    }
+  };
+
   const handleSelectGroup = (group) => {
+    // reset selection if some group was already selected
+    resetSelection(group);
+    const idx = findGroupIndex(group, groups);
+    groups[idx].selected = !groups[idx].selected;
     selectedGroup.name === group.name
       ? setSelectedGroup({})
-      : setSelectedGroup(group);
+      : setSelectedGroup(groups[idx]);
+    setGroups((groups) => [...groups]);
+  };
+
+  const resetSelection = (group) => {
+    if (Object.keys(selectedGroup).length !== 0) {
+      if (selectedGroup.name !== group.name) {
+        if (
+          selectedGroup.name === "completed" ||
+          selectedGroup.name === "removed"
+        ) {
+          const prevIdx = findGroupIndex(selectedGroup, historyGroups);
+          historyGroups[prevIdx].selected = !historyGroups[prevIdx].selected;
+          setHistoryGroups((historyGroups) => [...historyGroups]);
+        } else {
+          const prevIdx = findGroupIndex(selectedGroup, groups);
+          groups[prevIdx].selected = !groups[prevIdx].selected;
+          setGroups((groups) => [...groups]);
+        }
+      }
+    }
+  };
+
+  const handleSelectHistoryGroup = (group) => {
+    // reset selection if some group was already selected
+    resetSelection(group);
+    const idx = findGroupIndex(group, historyGroups);
+    historyGroups[idx].selected = !historyGroups[idx].selected;
+    selectedGroup.name === group.name
+      ? setSelectedGroup({})
+      : setSelectedGroup(historyGroups[idx]);
+    setHistoryGroups((historyGroups) => [...historyGroups]);
+  };
+
+  const handleEditTodo = (todo) => {
+    const idx = findTodoIndex(todo);
+    todos[idx].editMode = true;
+    setTodos((todos) => [...todos]);
+  };
+
+  const handleUpdateTodo = (todo, updateInput) => {
+    if (!checkDuplicateDescription(updateInput)) {
+      const idx = findTodoIndex(todo);
+      todos[idx].key = updateInput.trim();
+      todos[idx].description = updateInput.trim();
+      todos[idx].editMode = false;
+      setTodos((todos) => [...todos]);
+    } else {
+      alert("TODO already exists.");
+    }
+  };
+
+  const handleCancelUpdateTodo = (todo) => {
+    const idx = findTodoIndex(todo);
+    todos[idx].editMode = false;
+    setTodos((todos) => [...todos]);
+  };
+
+  const handleChangeImportant = (todo) => {
+    const idx = findTodoIndex(todo);
+    todos[idx].important = !todos[idx].important;
+    setTodos((todos) => [...todos]);
   };
 
   return (
@@ -89,7 +209,10 @@ const ToDoList = () => {
             <div className="group-selection-wrapper">
               <div className="group-selection-container">
                 {groups.slice(1).map((g) => (
-                  <div className="group-item-wrapper">
+                  <div
+                    key={`${g.name}+-input-option`}
+                    className="group-item-wrapper"
+                  >
                     <IconButton
                       className={`icon ${
                         selectedInputGroup.name === g.name ? "selected" : ""
@@ -134,29 +257,75 @@ const ToDoList = () => {
         </div>
       </div>
       <div className="groups-sidebar">
-        {groups.map((g) => (
-          <div className="group-sidebar-option-wrapper">
-            <div className="group-sidebar-option">
-              <IconButton
-                className="icon"
-                style={{ color: g.color }}
-                onClick={() => handleSelectGroup(g)}
-              >
-                {g.icon}
-              </IconButton>
+        <div className="groups-sidebar-options-container">
+          {groups.map((g) => (
+            <div key={g.name} className="groups-sidebar-option-wrapper">
+              <div className="groups-sidebar-option">
+                <IconButton
+                  className="icon"
+                  style={{
+                    color: g.color,
+                    backgroundColor: g.selected ? "#7e54d9" : "inherit",
+                  }}
+                  onClick={() => handleSelectGroup(g)}
+                >
+                  {g.icon}
+                </IconButton>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
+        <div className="groups-sidebar-history-options-container">
+          {historyGroups.map((g) => (
+            <div key={g.name} className="groups-sidebar-history-option-wrapper">
+              <div className="groups-sidebar-history-option">
+                <IconButton
+                  className="icon"
+                  style={{
+                    color: g.color,
+                    backgroundColor: g.selected ? "#7e54d9" : "inherit",
+                  }}
+                  onClick={() => handleSelectHistoryGroup(g)}
+                >
+                  {g.icon}
+                </IconButton>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
       <div className="todos-container">
         {(Object.keys(selectedGroup).length !== 0
           ? selectedGroup.name === "important"
             ? todos.filter((t) => t.important === true)
+            : selectedGroup.name === "completed"
+            ? completedTodos
+            : selectedGroup.name === "removed"
+            ? removedTodos
             : todos.filter((t) => t.group.name === selectedGroup.name)
           : todos
-        ).map((t, i) => (
-          <Todo data={t} />
-        ))}
+        ).map((t, i) =>
+          t.editMode ? (
+            <UpdateTodo
+              key={t.key}
+              todo={t}
+              handleUpdateTodo={handleUpdateTodo}
+              handleCancelUpdateTodo={handleCancelUpdateTodo}
+              handleChangeImportant={handleChangeImportant}
+            />
+          ) : (
+            <Todo
+              key={t.key}
+              todo={t}
+              history={t.history}
+              handleCompleteTodo={handleCompleteTodo}
+              handleRemoveTodo={handleRemoveTodo}
+              handleEditTodo={handleEditTodo}
+              handleChangeImportant={handleChangeImportant}
+              handleRemoveTodoCompletely={handleRemoveTodoCompletely}
+            />
+          )
+        )}
       </div>
     </div>
   );
