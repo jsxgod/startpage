@@ -96,22 +96,39 @@
     grid-area: todo-selection;
     display: flex;
     flex-direction: column;
-    justify-content: top;
+    justify-content: space-between;
     align-items: right;
     padding: 1rem 0;
-    .group-sidebar-option-wrapper {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-bottom: 1rem;
-      .group-sidebar-option {
-        font-size: 2rem;
-        color: $purple;
+    .groups-sidebar-options-container {
+      overflow-y: scroll;
+      height: 28rem;
+      .groups-sidebar-option-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 1rem;
+        .groups-sidebar-option {
+          font-size: 2rem;
+          color: $purple;
+        }
+      }
+    }
+    .groups-sidebar-history-options-container {
+      .groups-sidebar-history-option-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 1rem;
+        .groups.sidebar-history-option {
+          font-size: 2rem;
+          color: $purple;
+        }
       }
     }
   }
   .todos-container {
     grid-area: todo-content;
+    overflow-y: scroll;
     .todo-row {
       display: flex;
       justify-content: left;
@@ -120,20 +137,78 @@
       min-height: 100px;
       .todo-description-wrapper {
         background-color: $white;
-        color: $black;
+        color: $white;
         width: 70%;
-        max-height: 100px;
+        min-height: 4rem;
         display: flex;
-        padding: 8px;
+        justify-content: left;
+        align-items: center;
+        padding: 1rem;
         border-radius: 10px;
-        border: 10px solid $white;
-      }
+        overflow-wrap: break-word;
+        &.update {
+          background-position: left top, right bottom, left bottom, right top;
+          &:hover {
+            animation: move-border 1s infinite linear;
+          }
+          @keyframes move-border {
+            0% {
+              background-position: left top, right bottom, left bottom,
+                right top;
+            }
+            100% {
+              background-position: left 25px top, right 25px bottom,
+                left bottom 25px, right top 25px;
+            }
+          }
+        }
+        .update-input-wrapper {
+          width: 100%;
+          .update-input {
+            font-family: MontSerrat;
+            padding: 0.5rem 0;
+            width: 100%;
+            height: 100%;
+            color: $white;
+            font-size: 1rem;
+            background-color: inherit;
+            border: none;
+            resize: none;
 
+            border-bottom: 1px solid $dark;
+            transition: border-bottom 0.2s ease-in-out;
+            &:focus {
+              outline: none;
+              border-bottom: 1px solid $white;
+            }
+            &::placeholder {
+              color: $gray;
+            }
+            &.alert {
+              border-bottom: 1px solid $red;
+            }
+          }
+        }
+      }
       .todo-actions-container {
         width: 30%;
         display: flex;
         justify-content: space-evenly;
         align-items: center;
+      }
+      .update-actions-container {
+        width: 30%;
+        display: flex;
+        justify-content: right;
+        align-items: center;
+        padding: 0 1rem;
+      }
+      .history-todo-actions-container {
+        width: 30%;
+        display: flex;
+        justify-content: left;
+        align-items: center;
+        padding-left: 1rem;
       }
     }
   }
