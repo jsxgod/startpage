@@ -3,8 +3,11 @@
   justify-content: center;
   align-items: center;
   font-size: 2rem;
-  background-color: inherit;
   border: none;
+  border-radius: 10px;
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: inherit;
   // todo input related
   &.group-select {
     color: $purple;
@@ -35,6 +38,14 @@
   }
   &.edit {
     color: $white;
+  }
+  &.update {
+    color: $green;
+    margin-right: 1rem;
+  }
+  &.cancel {
+    margin-right: 1rem;
+    color: $orange;
   }
   &.drag {
     color: $white;
