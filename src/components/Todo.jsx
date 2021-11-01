@@ -22,7 +22,7 @@ const Todo = ({
       <div
         className="todo-description-wrapper"
         style={{
-          backgroundColor: "#131313",
+          backgroundColor: "inherit",
           outline: history
             ? history === "completed"
               ? "5px solid #00c853"
