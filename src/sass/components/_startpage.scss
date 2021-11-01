@@ -3,6 +3,7 @@
   grid-template-areas: "navbar navbar" "links todo" "searchbar searchbar";
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 5vh 85vh 10vh;
+  column-gap: 1rem;
   .navbar {
     grid-area: navbar;
     padding: 4px;
@@ -26,5 +27,8 @@
   }
   .todo-list {
     margin-right: 2rem;
+  }
+  .links-list {
+    margin-left: 2rem;
   }
 }
