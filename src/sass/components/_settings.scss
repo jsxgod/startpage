@@ -76,10 +76,19 @@
           color: $white;
           width: 100%;
           height: 100%;
-          overflow: scroll;
+          overflow-y: scroll;
+
+          &::-webkit-scrollbar {
+            width: 8px;
+            background-color: darken($white, 40);
+          }
+          &::-webkit-scrollbar-thumb {
+            background-color: $white;
+          }
+          scrollbar-color: $white darken($white, 40);
+          scrollbar-width: thin;
           resize: none;
           z-index: -2;
-          border-radius: 10px;
           font-size: 1.1rem;
           outline: none;
           background-color: inherit;
