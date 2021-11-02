@@ -8,3 +8,4 @@ export { default as IconButton } from "./IconButton";
 export { default as Todo } from "./Todo";
 export { default as UpdateTodo } from "./UpdateTodo";
 export { default as LinksList } from "./LinksList";
+export { default as Searchbar } from "./Searchbar";
