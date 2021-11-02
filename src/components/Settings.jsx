@@ -3,8 +3,15 @@ import { CloseButton } from "./";
 import {
   BsArrowRightSquare as LeftArrow,
   BsArrowLeftSquare as RightArrow,
+  BsPlusLg,
 } from "react-icons/bs";
-import { FaSave, FaFire, FaTrashAlt } from "react-icons/fa";
+import {
+  FaSave,
+  FaFire,
+  FaTrashAlt,
+  FaAngleLeft,
+  FaAngleRight,
+} from "react-icons/fa";
 import { motion } from "framer-motion";
 
 const Settings = ({ opened, openSettings }) => {
@@ -65,6 +72,51 @@ const Settings = ({ opened, openSettings }) => {
                     value={linksEditorData}
                     onChange={(event) => setLinksEditorData(event.target.value)}
                   ></textarea>
+                </div>
+              )}
+              {settings[selectedSetting] === "Searchbar" && (
+                <div className="searchbar-settings-wrapper">
+                  <div className="searchbar-settings-engine-selection-wrapper">
+                    <h2>Select Searchbar Engine</h2>
+                    <div className="engine-selection">
+                      <button>
+                        <FaAngleLeft />
+                      </button>
+                      <span>{"Google"}</span>
+                      <button>
+                        <FaAngleRight />
+                      </button>
+                    </div>
+                  </div>
+                  <div className="searchbar-settings-forward-search-container">
+                    <h2>Fast Forward Search</h2>
+                    <div className="forward-search-input-container">
+                      <input
+                        className="forward-search-input"
+                        placeholder="search string"
+                      ></input>
+                      <span className="separator">:</span>
+                      <input
+                        className="forward-search-input"
+                        placeholder="destination"
+                      ></input>
+                      <button className="forward-search-button">
+                        <BsPlusLg />
+                      </button>
+                    </div>
+                    <div className="forward-search-values-container">
+                      <div className="forward-search-value-wrapper">
+                        <span className="search-value">{'"deepl"'}</span>
+                        <span className="separator">:</span>
+                        <span className="destination-value">
+                          {"https://deepl.com"}
+                        </span>
+                        <button className="forward-search-button">
+                          <FaTrashAlt className="settings-button-icon" />
+                        </button>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               )}
               <div className="buttons-area">

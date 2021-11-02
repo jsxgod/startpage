@@ -63,12 +63,15 @@
       }
     }
     .setting-area {
-      display: flex;
-      flex-direction: column;
+      display: grid;
+      grid-template-areas: "setting-area" "buttons-area";
+      grid-template-rows: 9fr 1fr;
+      row-gap: 1rem;
       position: relative;
-      height: calc(100% - 2rem);
-      padding: 1rem;
+      height: 100%;
+      padding: 2rem;
       .links-editor-wrapper {
+        grid-area: setting-area;
         width: 100%;
         height: 100%;
         margin-bottom: 1rem;
@@ -94,12 +97,104 @@
           background-color: inherit;
         }
       }
+      .searchbar-settings-wrapper {
+        color: $white;
+        display: grid;
+        font-size: 1.2rem;
+        font-family: MontSerrat;
+        grid-template-areas: "engine" "forward";
+        grid-template-columns: 1fr;
+        row-gap: 2rem;
+        grid-template-rows: 1.5fr 9fr;
+        .separator {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        .searchbar-settings-engine-selection-wrapper {
+          grid-area: engine;
+          display: grid;
+          .engine-selection {
+            display: flex;
+            align-items: center;
+            padding-left: 3rem;
+            button {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              background: none;
+              border: none;
+              color: $white;
+              font-size: 2rem;
+            }
+            span {
+              margin: 0 1rem;
+            }
+          }
+        }
+        .searchbar-settings-forward-search-container {
+          overflow-y: scroll;
+          grid-area: forward;
+          display: grid;
+          grid-template-areas: "title ." "input ." "values values";
+          grid-template-columns: 1fr 1fr;
+          column-gap: 1rem;
+          grid-template-rows: 0.5fr 1fr 8fr;
+          row-gap: 2rem;
+          .forward-search-input-container {
+            grid-area: input;
+            display: grid;
+            grid-template-columns: 2fr 1fr 2.5fr 0.5fr;
+            padding-left: 3rem;
+            .forward-search-input {
+              outline: none;
+              color: $white;
+              background-color: inherit;
+              border: 1px solid $white;
+              font-family: MontSerrat;
+              padding: 0 1rem;
+              &::placeholder {
+                color: darken($white, 20);
+              }
+            }
+          }
+          .forward-search-values-container {
+            padding-left: 3rem;
+            grid-area: values;
+            font-family: MontSerratExtraLight;
+            .forward-search-value-wrapper {
+              width: calc(50% - 2rem);
+              display: grid;
+              grid-template-columns: 2fr 1fr 2.5fr 0.5fr;
+              .search-value {
+                display: flex;
+                justify-content: left;
+                align-items: center;
+              }
+              .destination-value {
+                display: flex;
+                justify-content: left;
+                align-items: center;
+              }
+            }
+          }
+
+          .forward-search-button {
+            color: $white;
+            background-color: inherit;
+            border: none;
+            font-size: 1.2rem;
+          }
+        }
+      }
       .buttons-container {
+        grid-area: buttons-area;
+        grid-row-start: 2;
         display: flex;
         justify-content: space-between;
         align-items: center;
         width: 100%;
-        height: 4rem;
+        height: 100%;
         .settings-button {
           display: flex;
           justify-content: space-evenly;
