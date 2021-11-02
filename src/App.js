@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./sass/main.scss";
-import { LinksList, NavBar, ToDoList } from "./components";
+import { LinksList, NavBar, Searchbar, ToDoList } from "./components";
 
 function App() {
   const [settingsOpened, setSettingsOpened] = useState(false);
@@ -9,6 +9,7 @@ function App() {
         <NavBar settingsOpened={settingsOpened} setSettingsOpened={setSettingsOpened}/>
         <LinksList />
         <ToDoList />
+        <Searchbar />
       </div>
   );
 }
