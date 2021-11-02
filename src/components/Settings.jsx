@@ -23,6 +23,12 @@ const Settings = ({ opened, openSettings }) => {
       ? JSON.stringify(JSON.parse(localLinksData), null, 2)
       : '[\n\t{\n\t"title":\t"TITLE",\n"links": [{}]}]';
   });
+  const [forwardSearchEditorData, setForwardSearchEditorData] = useState(() => {
+    const localForwardSearchData = localStorage.getItem("forward-search");
+    return localForwardSearchData ? JSON.parse(localForwardSearchData) : [];
+  });
+  const [searchInputValue, setSearchInputValue] = useState("");
+  const [destinationInputValue, setDestinationInputValue] = useState("");
 
   const handleSettingClick = (event) => {
     setSelectedSetting(event.target.getAttribute("data-index"));
@@ -32,10 +38,45 @@ const Settings = ({ opened, openSettings }) => {
     try {
       JSON.parse(linksEditorData);
       localStorage.setItem("links", linksEditorData);
+      localStorage.setItem(
+        "forward-search",
+        JSON.stringify(forwardSearchEditorData)
+      );
       window.location.reload();
     } catch (error) {
       alert(error);
     }
+  };
+
+  const checkDuplicate = (search) => {
+    return (
+      forwardSearchEditorData.filter((fs) => fs.search === search).length !== 0
+    );
+  };
+
+  const handleAddForwardSearch = () => {
+    if (searchInputValue !== "" && destinationInputValue !== "") {
+      const forwardSearch = {
+        search: searchInputValue,
+        destination: destinationInputValue,
+      };
+      if (!checkDuplicate(searchInputValue)) {
+        setForwardSearchEditorData((forwardSearchEditorData) => [
+          ...forwardSearchEditorData,
+          forwardSearch,
+        ]);
+      } else {
+        alert("Fast Forward Search " + searchInputValue + " already exists.");
+      }
+    }
+  };
+
+  const handleRemoveForwardSearch = (forwardSearch) => {
+    setForwardSearchEditorData((forwardSearchEditorData) => [
+      ...forwardSearchEditorData.filter(
+        (fs) => fs.search !== forwardSearch.search
+      ),
+    ]);
   };
 
   return (
@@ -92,29 +133,53 @@ const Settings = ({ opened, openSettings }) => {
                     <h2>Fast Forward Search</h2>
                     <div className="forward-search-input-container">
                       <input
-                        className="forward-search-input"
+                        type="text"
+                        value={searchInputValue}
                         placeholder="search string"
+                        className="forward-search-input"
+                        onChange={(event) =>
+                          setSearchInputValue(event.target.value)
+                        }
                       ></input>
                       <span className="separator">:</span>
                       <input
-                        className="forward-search-input"
+                        type="text"
+                        value={destinationInputValue}
                         placeholder="destination"
+                        className="forward-search-input"
+                        onChange={(event) =>
+                          setDestinationInputValue(event.target.value)
+                        }
                       ></input>
-                      <button className="forward-search-button">
+                      <button
+                        className="forward-search-button"
+                        onClick={() => handleAddForwardSearch()}
+                        disabled={
+                          searchInputValue === "" ||
+                          destinationInputValue === ""
+                        }
+                      >
                         <BsPlusLg />
                       </button>
                     </div>
                     <div className="forward-search-values-container">
-                      <div className="forward-search-value-wrapper">
-                        <span className="search-value">{'"deepl"'}</span>
-                        <span className="separator">:</span>
-                        <span className="destination-value">
-                          {"https://deepl.com"}
-                        </span>
-                        <button className="forward-search-button">
-                          <FaTrashAlt className="settings-button-icon" />
-                        </button>
-                      </div>
+                      {forwardSearchEditorData.map((fs) => (
+                        <div className="forward-search-value-wrapper">
+                          <span className="search-value">
+                            {'"' + fs.search + '"'}
+                          </span>
+                          <span className="separator">:</span>
+                          <span className="destination-value">
+                            {'"' + fs.destination + '"'}
+                          </span>
+                          <button
+                            className="forward-search-button"
+                            onClick={() => handleRemoveForwardSearch(fs)}
+                          >
+                            <FaTrashAlt className="settings-button-icon" />
+                          </button>
+                        </div>
+                      ))}
                     </div>
                   </div>
                 </div>
