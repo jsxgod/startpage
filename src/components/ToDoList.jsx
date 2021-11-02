@@ -7,6 +7,7 @@ import {
 import { RiCloseCircleFill } from "react-icons/ri";
 import availableGroups from "../data/todo-groups";
 import { IconButton, Todo, UpdateTodo } from ".";
+import { AnimatePresence, motion } from "framer-motion";
 
 const ToDoList = () => {
   const [todoInput, setTodoInput] = useState("");
@@ -120,6 +121,9 @@ const ToDoList = () => {
       ? setSelectedGroup({})
       : setSelectedGroup(groups[idx]);
     setGroups((groups) => [...groups]);
+    document
+      .getElementById("todos-container")
+      .scroll({ top: 0, behavior: "smooth" });
   };
 
   const resetSelection = (group) => {
@@ -205,38 +209,45 @@ const ToDoList = () => {
               <BsFillBookmarkPlusFill />
             )}
           </IconButton>
-          {groupSelectionOpened && (
-            <div className="group-selection-wrapper">
-              <div className="group-selection-container">
-                {groups.slice(1).map((g) => (
-                  <div
-                    key={`${g.name}+-input-option`}
-                    className="group-item-wrapper"
-                  >
-                    <IconButton
-                      className={`icon ${
-                        selectedInputGroup.name === g.name ? "selected" : ""
-                      }`}
-                      onClick={() => {
-                        setSelectedInputGroup(g);
-                        setAlertGroup(false);
-                      }}
+          <AnimatePresence>
+            {groupSelectionOpened && (
+              <motion.div
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                exit={{ scale: 0, transition: { duration: 0.1 } }}
+                className="group-selection-wrapper"
+              >
+                <div className="group-selection-container">
+                  {groups.slice(1).map((g) => (
+                    <div
+                      key={`${g.name}+-input-option`}
+                      className="group-item-wrapper"
                     >
-                      {g.icon}
-                    </IconButton>
-                  </div>
-                ))}
-                <button
-                  className="group-selection-close-button"
-                  onClick={() => {
-                    setGroupSelectionOpened(false);
-                  }}
-                >
-                  <RiCloseCircleFill />
-                </button>
-              </div>
-            </div>
-          )}
+                      <IconButton
+                        className={`icon ${
+                          selectedInputGroup.name === g.name ? "selected" : ""
+                        }`}
+                        onClick={() => {
+                          setSelectedInputGroup(g);
+                          setAlertGroup(false);
+                        }}
+                      >
+                        {g.icon}
+                      </IconButton>
+                    </div>
+                  ))}
+                  <button
+                    className="group-selection-close-button"
+                    onClick={() => {
+                      setGroupSelectionOpened(false);
+                    }}
+                  >
+                    <RiCloseCircleFill />
+                  </button>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
         <div className="todo-button-wrapper add" onClick={handleAddTodo}>
           <IconButton className="icon add">
@@ -294,7 +305,7 @@ const ToDoList = () => {
           ))}
         </div>
       </div>
-      <div className="todos-container">
+      <div className="todos-container" id="todos-container">
         {(Object.keys(selectedGroup).length !== 0
           ? selectedGroup.name === "important"
             ? todos.filter((t) => t.important === true)
