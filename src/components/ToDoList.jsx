@@ -194,7 +194,10 @@ const ToDoList = () => {
           value={todoInput}
           placeholder={"Type here..."}
           className={`todo-input ${alertInput ? "alert" : ""}`}
-          onChange={(event) => setTodoInput(event.target.value)}
+          onChange={(event) => {
+            setAlertInput(false);
+            setTodoInput(event.target.value);
+          }}
         ></input>
         <div className="todo-button-wrapper select-group">
           <IconButton
