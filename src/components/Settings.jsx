@@ -69,25 +69,28 @@ const Settings = ({ opened, openSettings }) => {
               )}
               <div className="buttons-area">
                 <div className="buttons-container">
-                  <button
+                  <motion.button
                     className="settings-button"
+                    whileTap={{ scale: 0.9 }}
                     onClick={() => handleSaveSettings()}
                   >
                     <p>Save Changes</p>
                     <FaSave className="settings-button-icon" />
-                  </button>
+                  </motion.button>
                   <motion.button
                     className="settings-button"
-                    whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                   >
                     <p>Discard Changes</p>
                     <FaFire className="settings-button-icon" />
                   </motion.button>
-                  <button className="settings-button">
+                  <motion.button
+                    className="settings-button"
+                    whileTap={{ scale: 0.9 }}
+                  >
                     <p>Reset All Settings</p>
                     <FaTrashAlt className="settings-button-icon" />
-                  </button>
+                  </motion.button>
                 </div>
               </div>
             </div>
