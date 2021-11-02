@@ -29,11 +29,16 @@ const LinksList = () => {
     localStorage.setItem("links", JSON.stringify(links));
   }, [links]);
 
-  const handleChangeSection = (name) => {
-    if (selectedSection === name) {
+  const handleChangeSection = (section) => {
+    if (selectedSection === section) {
       setSelectedSection("");
     } else {
-      setSelectedSection(name);
+      setSelectedSection(section);
+      setTimeout(() => {
+        document
+          .getElementById(section + "-links")
+          .scrollIntoView({ behavior: "smooth" });
+      }, 500);
     }
   };
 
@@ -49,13 +54,23 @@ const LinksList = () => {
               >
                 {selectedSection === section.title ? <TiMinus /> : <TiPlus />}
               </button>
-              <h1 onClick={() => handleChangeSection(section.title)}>
+              <h1
+                className={
+                  (selectedSection === section.title ? "selected" : "") +
+                  " " +
+                  (localStorage.getItem("enableFlicker") ? "flicker" : "")
+                }
+                onClick={() => handleChangeSection(section.title)}
+              >
                 {section.title}
               </h1>
             </div>
             <AnimatePresence>
               {selectedSection === section.title && (
-                <div className="section-links-container">
+                <div
+                  className="section-links-container"
+                  id={section.title + "-links"}
+                >
                   {section.links.map((link) => (
                     <motion.div
                       key={link.value + ":" + link.label}
