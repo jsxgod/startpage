@@ -6,13 +6,19 @@
     height: 100%;
     display: flex;
     align-items: center;
-    .searchbar-engine-icon-wrapper {
+    .searchbar-engine-icon-button {
       display: flex;
       justify-content: center;
+      align-items: center;
+      border: none;
+      background-color: inherit;
+      font-size: 3rem;
       margin-right: 1rem;
-      .searchbar-icon {
-        font-size: 3rem;
-        color: darken($white, 20);
+      &.googleScholar {
+        color: #a0c3ff;
+      }
+      &.duckDuckGo {
+        color: #e37151;
       }
     }
     .searchbar-input {
@@ -49,14 +55,20 @@
       font-size: 3rem;
       color: $white;
       margin-right: 1rem;
+      &:disabled {
+        cursor: default;
+      }
       &.reddit {
         color: #ff5700;
         clip-path: circle(23px at center);
         background-color: $white;
       }
 
-      &.stackOverflow {
-        color: #f48024;
+      &.stackOverflow > * {
+        fill: #f48024;
+      }
+      &.pdf > * {
+        fill: #f40f02;
       }
     }
   }
