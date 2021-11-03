@@ -158,7 +158,7 @@ const Searchbar = () => {
             }
           }}
           value={searchbarInput}
-          placeholder="Let's google!"
+          placeholder={`Let's ${engine.name}!`}
           onChange={(event) => setSearchbarInput(event.target.value)}
           className="searchbar-input"
         />
