@@ -64,9 +64,7 @@ const Searchbar = () => {
   };
 
   const toggleSearchOption = (option) => {
-    if (searchOption === "") {
-      setSearchOption(option);
-    } else if (searchOption === option) {
+    if (searchOption === option) {
       setSearchOption("");
     } else {
       setSearchOption(option);
