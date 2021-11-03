@@ -102,7 +102,7 @@
         display: grid;
         font-size: 1.2rem;
         font-family: MontSerrat;
-        grid-template-areas: "engine" "forward";
+        grid-template-areas: "forward" "forward";
         grid-template-columns: 1fr;
         row-gap: 2rem;
         grid-template-rows: 1.5fr 9fr;
@@ -110,27 +110,6 @@
           display: flex;
           justify-content: center;
           align-items: center;
-        }
-        .searchbar-settings-engine-selection-wrapper {
-          grid-area: engine;
-          display: grid;
-          .engine-selection {
-            display: flex;
-            align-items: center;
-            padding-left: 3rem;
-            button {
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              background: none;
-              border: none;
-              color: $white;
-              font-size: 2rem;
-            }
-            span {
-              margin: 0 1rem;
-            }
-          }
         }
         .searchbar-settings-forward-search-container {
           grid-area: forward;

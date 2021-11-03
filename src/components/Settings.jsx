@@ -5,13 +5,7 @@ import {
   BsArrowLeftSquare as RightArrow,
   BsPlusLg,
 } from "react-icons/bs";
-import {
-  FaSave,
-  FaFire,
-  FaTrashAlt,
-  FaAngleLeft,
-  FaAngleRight,
-} from "react-icons/fa";
+import { FaSave, FaFire, FaTrashAlt } from "react-icons/fa";
 import { motion } from "framer-motion";
 
 const Settings = ({ opened, openSettings }) => {
@@ -117,18 +111,6 @@ const Settings = ({ opened, openSettings }) => {
               )}
               {settings[selectedSetting] === "Searchbar" && (
                 <div className="searchbar-settings-wrapper">
-                  <div className="searchbar-settings-engine-selection-wrapper">
-                    <h2>Select Searchbar Engine</h2>
-                    <div className="engine-selection">
-                      <button>
-                        <FaAngleLeft />
-                      </button>
-                      <span>{"Google"}</span>
-                      <button>
-                        <FaAngleRight />
-                      </button>
-                    </div>
-                  </div>
                   <div className="searchbar-settings-forward-search-container">
                     <h2>Fast Forward Search</h2>
                     <div className="forward-search-input-container">
