@@ -22,12 +22,11 @@ const Todo = ({
       <div
         className="todo-description-wrapper"
         style={{
-          backgroundColor: "inherit",
           outline: history
             ? history === "completed"
               ? "5px solid #00c853"
               : "5px solid #cf291d"
-            : `5px solid ${todo.group.color}`,
+            : `4px solid ${todo.group.color}`,
         }}
       >
         {todo.description}
