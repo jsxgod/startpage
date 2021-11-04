@@ -23,10 +23,10 @@ const Settings = ({ opened, openSettings }) => {
   });
   const [searchInputValue, setSearchInputValue] = useState("");
   const [destinationInputValue, setDestinationInputValue] = useState("");
-
-  const handleSettingClick = (event) => {
-    setSelectedSetting(event.target.getAttribute("data-index"));
-  };
+  const [selectedTheme, setSelectedTheme] = useState(() => {
+    const localTheme = localStorage.getItem("theme");
+    return localTheme ? localTheme : "dark";
+  });
 
   const handleSaveSettings = () => {
     try {
@@ -36,6 +36,7 @@ const Settings = ({ opened, openSettings }) => {
         "forward-search",
         JSON.stringify(forwardSearchEditorData)
       );
+      localStorage.setItem("theme", selectedTheme);
       window.location.reload();
     } catch (error) {
       alert(error);
@@ -107,6 +108,14 @@ const Settings = ({ opened, openSettings }) => {
                     value={linksEditorData}
                     onChange={(event) => setLinksEditorData(event.target.value)}
                   ></textarea>
+                </div>
+              )}
+              {settings[selectedSetting] === "Theme" && (
+                <div className="theme-settings-wrapper">
+                  <button onClick={() => setSelectedTheme("light")}>
+                    Light
+                  </button>
+                  <button onClick={() => setSelectedTheme("dark")}>Dark</button>
                 </div>
               )}
               {settings[selectedSetting] === "Searchbar" && (
