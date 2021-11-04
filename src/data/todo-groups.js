@@ -43,7 +43,7 @@ const bookmarks = [
   {
     name: "alarm",
     icon: <BsAlarmFill />,
-    color: "#EF5350",
+    color: "#e57373",
     selected: false,
   },
   
@@ -75,7 +75,7 @@ const bookmarks = [
   {
     name: "art",
     icon: <BsFillPaletteFill />,
-    color: "#E65100",
+    color: "#DAF7A6 ",
     selected: false,
   },
   {
