@@ -20,3 +20,77 @@ $neonPink: #ea36af;
 
 $flickerLeft: $neonGreen;
 $flickerRight: $neonPink;
+
+:root {
+  --bg-color: #131313;
+  --settings-bg-color: #1d1d1d;
+  --widget-bg-color: #181818;
+  --widget-border-color: #131313;
+  --main-color: #ececec;
+  --main-text-color: #ececec;
+  --main-text-color-darken: #bcbcbc;
+  --secondary-text-color: #131313;
+  --link-color: #ececec;
+  --text-accent-1: #75fa69;
+  --text-accent-2: #ea36af;
+  --icon-not-selected-color: #ececec;
+  --dark: #1d1d1d;
+  --dark-lighten-10: #333333;
+  --dark-lighten-20: #4a4a4a;
+  --input-highlight: #ececec;
+  --scrollbar-bg-color: #8d8d8d;
+  --scrollbar-thumb-color: #ececec;
+  --settings-btn-bg-color: #ececec;
+  --settings-btn-hover-bg-color: #bcbcbc;
+  --settings-open-btn-color: #ececec;
+  --settings-open-btn-hover-color: #bcbcbc;
+  --group-selection-bg-color: #131313;
+  --todo-description-bg-color: inherit;
+  --box-shadow: 0px 3px 15px rgba(0, 0, 0, 1);
+  --drop-shadow: drop-shadow(3px 3px 2px rgba(0, 0, 0, 0.7));
+
+  .icon {
+    > * {
+      -webkit-filter: var(--drop-shadow);
+      filter: var(--drop-shadow);
+    }
+  }
+}
+
+[data-theme="light"] {
+  --bg-color: #ececec;
+  --settings-bg-color: #f3f3f3;
+  --widget-bg-color: #dfe3ee;
+  --widget-border-color: #1d1d1d;
+  --main-color: #1d1d1d;
+  --main-text-color: #1d1d1d;
+  --main-text-color-darken: #bcbcbc; //
+  --secondary-text-color: #f3f3f3;
+  --link-color: #1d1d1d;
+  --text-accent-1: #ff0000;
+  --text-accent-2: #00ffff;
+  --icon-not-selected-color: #1d1d1d;
+  --dark: #131313;
+  --dark-lighten-10: #bcbcbc;
+  --dark-lighten-20: #4a4a4a;
+  --input-highlight: #131313;
+  --scrollbar-bg-color: #8d8d8d;
+  --scrollbar-thumb-color: #f3f3f3;
+  --settings-btn-bg-color: #1d1d1d;
+  --settings-btn-hover-bg-color: #2d2d2d;
+  --settings-open-btn-color: #1d1d1d;
+  --settings-open-btn-hover-color: #3d3d3d;
+  --group-selection-bg-color: #ececec;
+  --todo-description-bg-color: inherit;
+  --box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+  --drop-shadow: drop-shadow(1px 0px 0px rgba(0, 0, 0, 0.2));
+
+  .icon {
+    > * {
+      -webkit-filter: var(--drop-shadow);
+      filter: var(--drop-shadow);
+    }
+
+    box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+  }
+}

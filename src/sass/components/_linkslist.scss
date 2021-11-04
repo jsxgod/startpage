@@ -1,7 +1,8 @@
 .links-list {
   grid-area: links;
-  background-color: lighten($black, 2);
+  background-color: var(--widget-bg-color);
   border-radius: 2rem;
+  box-shadow: var(--box-shadow);
   padding: 1rem;
   overflow-y: scroll;
   &::-webkit-scrollbar {
@@ -15,12 +16,12 @@
         display: flex;
         justify-content: left;
         align-items: center;
-        color: $white;
+        color: var(--main-text-color);
         user-select: none;
         margin-bottom: 1rem;
         .section-button {
           position: relative;
-          color: $white;
+          color: var(--main-text-color);
           background-color: inherit;
           width: 3rem;
           height: 3rem;
@@ -32,17 +33,17 @@
           font-size: 2rem;
         }
         h1 {
-          text-shadow: 0.06rem 0 0.06rem $flickerRight,
-            -0.125rem 0 0.06rem $flickerLeft;
+          text-shadow: 0.06rem 0 0.06rem var(--text-accent-2),
+            -0.125rem 0 0.06rem var(--text-accent-1);
           font-size: 5rem;
           letter-spacing: 0.1rem;
           font-family: MontSerratBlack;
           &:hover {
             cursor: pointer;
-            color: darken($white, 20);
+            color: var(--main-text-color-darken);
           }
           &.selected {
-            color: darken($white, 20);
+            color: var(--main-text-color-darken);
           }
           &.flicker {
             animation-duration: 0.01s;
@@ -54,11 +55,12 @@
           }
           @keyframes text-flicker {
             from {
-              text-shadow: 1px 0 0 $flickerRight, -2px 0 0 $flickerLeft;
+              text-shadow: 1px 0 0 var(--text-accent-2),
+                -2px 0 0 var(--text-accent-1);
             }
             to {
-              text-shadow: 2px 0.5px 2px $flickerRight,
-                -1px -0.5px 2px $flickerLeft;
+              text-shadow: 2px 0.5px 2px var(--text-accent-2),
+                -1px -0.5px 2px var(--text-accent-1);
             }
           }
         }
@@ -71,7 +73,7 @@
             font-family: MontSerratExtraLight;
             font-size: 1.1rem;
             text-decoration: none;
-            color: $white;
+            color: var(--link-color);
             transition: color ease-in-out;
 
             &:hover {
@@ -79,10 +81,10 @@
               @keyframes color-change {
                 0%,
                 100% {
-                  color: $flickerLeft;
+                  color: var(--text-accent-1);
                 }
                 50% {
-                  color: $flickerRight;
+                  color: var(--text-accent-2);
                 }
               }
             }

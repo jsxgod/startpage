@@ -13,15 +13,15 @@
     align-items: center;
 
     .settings-button {
-      color: $white;
-      background-color: $black;
+      color: var(--settings-open-btn-color);
+      background-color: inherit;
       border: none;
       .settings-icon {
         font-size: 1.5rem;
         transition: 0.3s ease-in-out;
         &:hover {
           cursor: pointer;
-          color: darken($gray, 5%);
+          color: var(--settings-open-btn-hover-color);
         }
       }
     }

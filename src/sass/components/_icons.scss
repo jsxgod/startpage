@@ -8,6 +8,7 @@
   width: 2.5rem;
   height: 2.5rem;
   background-color: inherit;
+  color: var(--icon-not-selected-color);
   // todo input related
   &.group-select {
     color: $purple;
@@ -20,7 +21,7 @@
     color: $orange;
   }
   &.important-button {
-    color: $white;
+    color: var(--icon-not-selected-color);
   }
   &.important-button-selected {
     color: $orange;
@@ -37,7 +38,7 @@
     color: $red;
   }
   &.edit {
-    color: $white;
+    color: var(--main-color);
   }
   &.update {
     color: $green;

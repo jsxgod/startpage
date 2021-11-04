@@ -5,37 +5,41 @@
   grid-template-areas: "todo-input todo-input" "todo-content todo-selection";
   grid-template-rows: 1fr 9fr;
   grid-template-columns: 9fr 1fr;
-  background-color: lighten($black, 2);
+  background-color: var(--widget-bg-color);
   border-radius: 2rem;
-  .todo-input-wrapper {
+  box-shadow: var(--box-shadow);
+  .todo-input-container {
     grid-area: todo-input;
     display: grid;
     grid-template-areas: "input important-button select-group add";
     grid-template-columns: 7fr 1fr 1fr 1fr;
-    .todo-input {
-      -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-      -moz-box-sizing: border-box; /* Firefox, other Gecko */
-      box-sizing: border-box; /* Opera/IE 8+ */
-      grid-area: input;
-      background-color: inherit;
-      font-size: 2rem;
-      color: $white;
-      font-family: MontSerratBlack;
-      padding: 1rem;
-      padding-left: 0;
-      margin: 0 2rem;
-      border: none;
-      border-bottom: 1px solid lighten($dark, 10);
-      transition: border-bottom 0.2s ease-in-out;
-      &:focus {
-        outline: none;
-        border-bottom: 1px solid $white;
-      }
-      &::placeholder {
-        color: $gray;
-      }
-      &.alert {
-        border-bottom: 1px solid $red;
+    .todo-input-wrapper {
+      .todo-input {
+        position: relative;
+        -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+        -moz-box-sizing: border-box; /* Firefox, other Gecko */
+        box-sizing: border-box; /* Opera/IE 8+ */
+        grid-area: input;
+        background-color: inherit;
+        font-size: 2rem;
+        color: var(--main-text-color);
+        font-family: MontSerratBlack;
+        padding: 1rem;
+        padding-left: 0;
+        margin: 0 2rem;
+        border: none;
+        border-bottom: 1px solid var(--dark-lighten-10);
+        transition: border-bottom 0.2s ease-in-out;
+        &:focus {
+          outline: none;
+          border-bottom: 1px solid var(--input-highlight);
+        }
+        &::placeholder {
+          color: var(--dark-lighten-20);
+        }
+        &.alert {
+          border-bottom: 1px solid $red;
+        }
       }
     }
     .todo-button-wrapper {
@@ -66,19 +70,19 @@
             height: 100%;
             border-radius: 10px;
             padding: 1rem;
-            background-color: $white;
+            background-color: var(--group-selection-bg-color);
             display: grid;
             .group-item-wrapper {
-              color: $black;
               display: flex;
               justify-content: center;
               align-items: center;
-              width: 3.5rem;
-              height: 3.5rem;
+              width: 4.5rem;
+              height: 4rem;
 
               border: none;
             }
             .group-selection-close-button {
+              color: var(--icon-not-selected-color);
               position: absolute;
               font-size: 1rem;
               top: 5px;
@@ -160,8 +164,8 @@
       padding: 1rem;
       min-height: 100px;
       .todo-description-wrapper {
-        background-color: $white;
-        color: $white;
+        background-color: var(--todo-description-bg-color);
+        color: var(--main-text-color);
         width: 70%;
         min-height: 4rem;
         display: flex;
@@ -172,6 +176,7 @@
         overflow-wrap: break-word;
         line-height: 1.3rem;
         margin-right: 1rem;
+        box-shadow: var(--box-shadow);
         &.update {
           &:focus-within {
             animation: move-border 1s infinite linear;
@@ -198,17 +203,17 @@
             padding: 0.5rem 0;
             width: 100%;
             height: 100%;
-            color: $white;
+            color: var(--main-text-color);
             font-size: 1rem;
-            background-color: inherit;
+            background-color: var(--todo-description-bg-color);
             border: none;
             resize: none;
 
-            border-bottom: 1px solid lighten($dark, 10);
+            border-bottom: 1px solid var(--dark-lighten-10);
             transition: border-bottom 0.2s ease-in-out;
             &:focus {
               outline: none;
-              border-bottom: 1px solid $white;
+              border-bottom: 1px solid var(--input-highlight);
             }
             &::placeholder {
               color: $gray;

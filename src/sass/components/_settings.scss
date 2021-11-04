@@ -7,8 +7,8 @@
     position: relative;
     width: 90vw;
     height: 95vh;
-    background-color: $dark;
-    border: 5px solid $white;
+    background-color: var(--settings-bg-color);
+    border: 5px solid var(--main-color);
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -18,7 +18,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background-color: $white;
+      background-color: var(--main-color);
       .settings-title {
         font-size: 1.1rem;
         position: absolute;
@@ -31,13 +31,13 @@
         display: flex;
         justify-content: space-between;
         .settings-option {
+          color: var(--secondary-text-color);
           font-size: 1.2rem;
-          background-color: $white;
+          background-color: inherit;
           display: flex;
           justify-content: center;
           align-items: center;
           &.selected {
-            color: $red;
             font-family: MontSerratBlack;
           }
           &:hover {
@@ -76,17 +76,17 @@
         height: 100%;
         margin-bottom: 1rem;
         .links-editor {
-          color: $white;
+          color: var(--main-text-color);
           width: 100%;
           height: 100%;
           overflow-y: scroll;
 
           &::-webkit-scrollbar {
             width: 8px;
-            background-color: darken($white, 40);
+            background-color: var(--scrollbar-bg-color);
           }
           &::-webkit-scrollbar-thumb {
-            background-color: $white;
+            background-color: var(--scrollbar-thumb-color);
           }
           scrollbar-color: $white darken($white, 40);
           scrollbar-width: thin;
@@ -97,8 +97,14 @@
           background-color: inherit;
         }
       }
+      .theme-settings-wrapper {
+        color: var(--main-text-color);
+        grid-area: setting-area;
+        display: grid;
+      }
       .searchbar-settings-wrapper {
-        color: $white;
+        color: var(--main-text-color);
+        grid-area: setting-area;
         display: grid;
         font-size: 1.2rem;
         font-family: MontSerrat;
@@ -126,13 +132,13 @@
             padding-left: 3rem;
             .forward-search-input {
               outline: none;
-              color: $white;
+              color: var(--main-text-color);
               background-color: inherit;
-              border: 1px solid $white;
+              border: 1px solid var(--main-color);
               font-family: MontSerrat;
               padding: 0 1rem;
               &::placeholder {
-                color: darken($white, 20);
+                color: var(--main-text-color-darken);
               }
             }
           }
@@ -145,10 +151,10 @@
             overflow-y: scroll;
             &::-webkit-scrollbar {
               width: 8px;
-              background-color: darken($white, 40);
+              background-color: var(--scrollbar-bg-color);
             }
             &::-webkit-scrollbar-thumb {
-              background-color: $white;
+              background-color: var(--scrollbar-thumb-color);
             }
             scrollbar-color: $white darken($white, 40);
             scrollbar-width: thin;
@@ -171,13 +177,13 @@
             }
           }
           .forward-search-button {
-            color: $white;
+            color: var(--main-text-color);
             background-color: inherit;
             border: none;
             font-size: 1.2rem;
 
             &:disabled {
-              color: lighten($dark, 15);
+              color: var(--dark-lighten-20);
               cursor: default;
             }
           }
@@ -200,11 +206,11 @@
           width: 220px;
           height: 3rem;
           border-radius: 10px;
-          background-color: $white;
-          color: $black;
+          background-color: var(--settings-btn-bg-color);
+          color: var(--secondary-text-color);
           transition: background-color 0.2s ease-in-out;
           &:hover {
-            background-color: darken($white, 20);
+            background-color: var(--settings-btn-hover-bg-color);
           }
           .settings-button-icon {
             font-size: 1.5rem;
