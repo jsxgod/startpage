@@ -19,7 +19,7 @@ const UpdateTodo = ({
       <div
         className="todo-description-wrapper update"
         style={{
-          backgroundColor: "#131313",
+          backgroundColor: "inherit",
           backgroundImage: `linear-gradient(90deg, ${todo.group.color} 50%, transparent 50%),
            linear-gradient(90deg, ${todo.group.color} 50%, transparent 50%), 
            linear-gradient(0deg, ${todo.group.color} 50%, transparent 50%), 
