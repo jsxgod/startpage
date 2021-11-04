@@ -188,17 +188,19 @@ const ToDoList = () => {
 
   return (
     <div className="todo-list">
-      <div className="todo-input-wrapper">
-        <input
-          type="text"
-          value={todoInput}
-          placeholder={"Type here..."}
-          className={`todo-input ${alertInput ? "alert" : ""}`}
-          onChange={(event) => {
-            setAlertInput(false);
-            setTodoInput(event.target.value);
-          }}
-        ></input>
+      <div className="todo-input-container">
+        <div className="todo-input-wrapper">
+          <input
+            type="text"
+            value={todoInput}
+            placeholder={"Type here..."}
+            className={`todo-input ${alertInput ? "alert" : ""}`}
+            onChange={(event) => {
+              setAlertInput(false);
+              setTodoInput(event.target.value);
+            }}
+          ></input>
+        </div>
         <div className="todo-button-wrapper select-group">
           <IconButton
             className={`icon ${
