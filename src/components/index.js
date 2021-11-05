@@ -9,3 +9,5 @@ export { default as Todo } from "./Todo";
 export { default as UpdateTodo } from "./UpdateTodo";
 export { default as LinksList } from "./LinksList";
 export { default as Searchbar } from "./Searchbar";
+export { default as Sparkles } from "./Sparkles";
+export { default as Sparkle } from "./Sparkle";
