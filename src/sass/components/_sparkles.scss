@@ -1,0 +1,70 @@
+.sparkles {
+  //span
+  position: relative;
+  display: inline-block;
+  &.on-hover {
+    .sparkle-wrapper {
+      transition: opacity 1s ease-in-out;
+      opacity: 0;
+    }
+    &:hover {
+      .sparkle-wrapper {
+        opacity: 1;
+      }
+    }
+  }
+  &.focus-within {
+    .sparkle-wrapper {
+      transition: opacity 1s ease-in-out;
+      opacity: 0;
+    }
+    &:focus-within {
+      .sparkle-wrapper {
+        opacity: 1;
+      }
+    }
+  }
+  &.hidden {
+    .sparkle-wrapper {
+      visibility: hidden;
+    }
+  }
+  .sparkle-wrapper {
+    position: absolute;
+    display: block;
+    pointer-events: none;
+    z-index: 2;
+    animation: pop 700ms ease-in-out forwards;
+
+    @keyframes pop {
+      0% {
+        transform: scale(0);
+      }
+      50% {
+        transform: scale(1);
+      }
+      100% {
+        transform: scale(0);
+      }
+    }
+    .sparkle {
+      // SVG
+      display: block;
+      z-index: 2;
+      animation: spin 1000ms linear;
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(180deg);
+        }
+      }
+    }
+  }
+  .child-wrapper {
+    position: relative;
+    z-index: 1;
+  }
+}
