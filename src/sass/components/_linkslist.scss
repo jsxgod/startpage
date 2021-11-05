@@ -77,7 +77,7 @@
             transition: color ease-in-out;
 
             &:hover {
-              animation: color-change 1s infinite;
+              animation: color-change 2s infinite;
               @keyframes color-change {
                 0%,
                 100% {
