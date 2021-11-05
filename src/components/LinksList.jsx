@@ -1,6 +1,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
 import { TiPlus, TiMinus } from "react-icons/ti";
+import { Sparkles } from ".";
 
 const LinksList = () => {
   /* 
@@ -62,7 +63,9 @@ const LinksList = () => {
                 }
                 onClick={() => handleChangeSection(section.title)}
               >
-                {section.title}
+                <Sparkles hidden={selectedSection !== section.title}>
+                  {section.title}
+                </Sparkles>
               </h1>
             </div>
             <AnimatePresence>
@@ -82,7 +85,7 @@ const LinksList = () => {
                       <motion.a
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
-                        exit={{ opacity: 0, transition: { duration: 0 } }}
+                        exit={{ opacity: 0, transition: { duration: 0.1 } }}
                         href={link.value}
                       >
                         {link.label}

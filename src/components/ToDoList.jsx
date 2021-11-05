@@ -6,7 +6,7 @@ import {
 } from "react-icons/bs";
 import { RiCloseCircleFill } from "react-icons/ri";
 import availableGroups from "../data/todo-groups";
-import { IconButton, Todo, UpdateTodo } from ".";
+import { IconButton, Sparkles, Todo, UpdateTodo } from ".";
 import { AnimatePresence, motion } from "framer-motion";
 
 const ToDoList = () => {
@@ -186,20 +186,27 @@ const ToDoList = () => {
     setTodos((todos) => [...todos]);
   };
 
+  const InputWrapper = ({ children }) => {
+    return todoInput === "" ? children : <Sparkles>{children}</Sparkles>;
+  };
+
   return (
     <div className="todo-list">
       <div className="todo-input-container">
         <div className="todo-input-wrapper">
-          <input
-            type="text"
-            value={todoInput}
-            placeholder={"Type here..."}
-            className={`todo-input ${alertInput ? "alert" : ""}`}
-            onChange={(event) => {
-              setAlertInput(false);
-              setTodoInput(event.target.value);
-            }}
-          ></input>
+          <Sparkles hidden={todoInput === ""}>
+            <input
+              type="text"
+              value={todoInput}
+              placeholder={"Type here..."}
+              className={`todo-input ${alertInput ? "alert" : ""}`}
+              onChange={(event) => {
+                setAlertInput(false);
+                setTodoInput(event.target.value);
+              }}
+              autoFocus={true}
+            />
+          </Sparkles>
         </div>
         <div className="todo-button-wrapper select-group">
           <IconButton
