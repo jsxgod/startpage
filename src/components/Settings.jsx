@@ -146,7 +146,7 @@ const Settings = ({ opened, openSettings }) => {
                       </div>
                       <Sparkles
                         showOnlyOnHover
-                        hidden={selectedTheme === theme.name}
+                        hidden={selectedTheme.name === theme.name}
                       >
                         <IconButton
                           className={`icon 
