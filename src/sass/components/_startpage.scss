@@ -4,7 +4,6 @@
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 5vh 85vh 10vh;
   column-gap: 1rem;
-  padding: 0 2rem;
   .navbar {
     grid-area: navbar;
     padding: 4px;
@@ -13,6 +12,7 @@
     align-items: center;
 
     .settings-button {
+      margin-right: 2rem;
       color: var(--settings-open-btn-color);
       background-color: inherit;
       border: none;
@@ -25,5 +25,14 @@
         }
       }
     }
+  }
+  .todo-list {
+    margin-right: 2rem;
+  }
+  .links-list {
+    margin-left: 2rem;
+  }
+  .searchbar {
+    margin: 0 2rem;
   }
 }
