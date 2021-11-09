@@ -63,7 +63,7 @@ const bookmarks = [
   {
     name: "books",
     icon: <BsBookFill />,
-    color: "#D7CCC8",
+    color: "#bcaaa4",
     selected: false,
   },
   {
