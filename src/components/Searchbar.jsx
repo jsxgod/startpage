@@ -96,59 +96,62 @@ const Searchbar = () => {
   return (
     <div className="searchbar">
       <div className="searchbar-container">
-        <motion.button
-          className={`searchbar-option-icon-button ${
-            searchOption === "reddit" && engine.name !== "googleScholar"
-              ? "reddit"
-              : ""
-          }`}
-          disabled={engine.name === "googleScholar"}
-          whileHover={hoverEnabled ? { scale: 1.1 } : { scale: 1 }}
-          whileTap={{ scale: 0.8 }}
-          onClick={() => toggleSearchOption("reddit")}
-        >
-          <BsReddit />
-        </motion.button>
-        <motion.button
-          className={`searchbar-option-icon-button ${
-            searchOption === "stack overflow" && engine.name !== "googleScholar"
-              ? "stackOverflow"
-              : ""
-          }`}
-          disabled={engine.name === "googleScholar"}
-          whileHover={hoverEnabled ? { scale: 1.1 } : { scale: 1 }}
-          whileTap={{ scale: 0.8 }}
-          onClick={() => toggleSearchOption("stack overflow")}
-        >
-          <BsStackOverflow />
-        </motion.button>
-        <motion.button
-          className={`searchbar-option-icon-button ${
-            searchOption === "pdf" && engine.name !== "googleScholar"
-              ? "pdf"
-              : ""
-          }`}
-          disabled={engine.name === "googleScholar"}
-          whileHover={hoverEnabled ? { scale: 1.1 } : { scale: 1 }}
-          whileTap={{ scale: 0.8 }}
-          onClick={() => toggleSearchOption("pdf")}
-        >
-          <BsFillFileEarmarkPdfFill />
-        </motion.button>
-        <motion.button
-          className={`searchbar-engine-icon-button ${engine.name}`}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.8 }}
-          onClick={() => toggleEngine(engine.name)}
-        >
-          {engine.name === "google" ? (
-            <FcGoogle />
-          ) : engine.name === "googleScholar" ? (
-            <SiGooglescholar />
-          ) : (
-            <SiDuckduckgo />
-          )}
-        </motion.button>
+        <div className="searchbar-options">
+          <motion.button
+            className={`searchbar-option-icon-button ${
+              searchOption === "reddit" && engine.name !== "googleScholar"
+                ? "reddit"
+                : ""
+            }`}
+            disabled={engine.name === "googleScholar"}
+            whileHover={hoverEnabled ? { scale: 1.1 } : { scale: 1 }}
+            whileTap={{ scale: 0.8 }}
+            onClick={() => toggleSearchOption("reddit")}
+          >
+            <BsReddit />
+          </motion.button>
+          <motion.button
+            className={`searchbar-option-icon-button ${
+              searchOption === "stack overflow" &&
+              engine.name !== "googleScholar"
+                ? "stackOverflow"
+                : ""
+            }`}
+            disabled={engine.name === "googleScholar"}
+            whileHover={hoverEnabled ? { scale: 1.1 } : { scale: 1 }}
+            whileTap={{ scale: 0.8 }}
+            onClick={() => toggleSearchOption("stack overflow")}
+          >
+            <BsStackOverflow />
+          </motion.button>
+          <motion.button
+            className={`searchbar-option-icon-button ${
+              searchOption === "pdf" && engine.name !== "googleScholar"
+                ? "pdf"
+                : ""
+            }`}
+            disabled={engine.name === "googleScholar"}
+            whileHover={hoverEnabled ? { scale: 1.1 } : { scale: 1 }}
+            whileTap={{ scale: 0.8 }}
+            onClick={() => toggleSearchOption("pdf")}
+          >
+            <BsFillFileEarmarkPdfFill />
+          </motion.button>
+          <motion.button
+            className={`searchbar-engine-icon-button ${engine.name}`}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.8 }}
+            onClick={() => toggleEngine(engine.name)}
+          >
+            {engine.name === "google" ? (
+              <FcGoogle />
+            ) : engine.name === "googleScholar" ? (
+              <SiGooglescholar />
+            ) : (
+              <SiDuckduckgo />
+            )}
+          </motion.button>
+        </div>
         <input
           autoFocus
           type="text"
