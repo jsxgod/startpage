@@ -17,15 +17,22 @@ const Todo = ({
   handleEditTodo,
   history,
 }) => {
+  const theme = JSON.parse(localStorage.getItem("theme"));
   return (
     <div className="todo-row">
       <div
-        className="todo-description-wrapper"
+        className={`todo-description-wrapper ${
+          theme ? (theme.mono === "true" ? "mono" : "") : ""
+        }`}
         style={{
           outline: history
             ? history === "completed"
-              ? "5px solid #00c853"
-              : "5px solid #cf291d"
+              ? "4px solid #00c853"
+              : "4px solid #cf291d"
+            : theme
+            ? theme.mono === "true"
+              ? ""
+              : `4px solid ${todo.group.color}`
             : `4px solid ${todo.group.color}`,
         }}
       >
