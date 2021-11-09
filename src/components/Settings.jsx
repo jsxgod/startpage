@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { CloseButton } from "./";
+import { CloseButton, Sparkles } from "./";
 import {
   BsArrowRightSquare as LeftArrow,
   BsArrowLeftSquare as RightArrow,
   BsPlusLg,
 } from "react-icons/bs";
+import { ImRadioChecked, ImRadioUnchecked } from "react-icons/im";
 import { FaSave, FaFire, FaTrashAlt } from "react-icons/fa";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
+import IconButton from "./IconButton";
+import themes from "../data/themes";
 
 const Settings = ({ opened, openSettings }) => {
   const settings = ["Links", "Theme", "Searchbar"];
@@ -24,9 +27,12 @@ const Settings = ({ opened, openSettings }) => {
   const [searchInputValue, setSearchInputValue] = useState("");
   const [destinationInputValue, setDestinationInputValue] = useState("");
   const [selectedTheme, setSelectedTheme] = useState(() => {
-    const localTheme = localStorage.getItem("theme");
-    return localTheme ? localTheme : "dark";
+    const localTheme = JSON.parse(localStorage.getItem("theme"));
+    return localTheme ? localTheme : themes[0];
   });
+  const [imgLoadedFlags, setImgLoadedFlags] = useState([
+    ...themes.map((theme) => false),
+  ]);
 
   const handleSaveSettings = () => {
     try {
@@ -36,7 +42,7 @@ const Settings = ({ opened, openSettings }) => {
         "forward-search",
         JSON.stringify(forwardSearchEditorData)
       );
-      localStorage.setItem("theme", selectedTheme);
+      localStorage.setItem("theme", JSON.stringify(selectedTheme));
       window.location.reload();
     } catch (error) {
       alert(error);
@@ -72,6 +78,12 @@ const Settings = ({ opened, openSettings }) => {
         (fs) => fs.search !== forwardSearch.search
       ),
     ]);
+  };
+
+  const handleLoadImage = (index) => {
+    const temp = [...imgLoadedFlags];
+    temp[index] = true;
+    setImgLoadedFlags(temp);
   };
 
   return (
@@ -112,10 +124,44 @@ const Settings = ({ opened, openSettings }) => {
               )}
               {settings[selectedSetting] === "Theme" && (
                 <div className="theme-settings-wrapper">
-                  <button onClick={() => setSelectedTheme("light")}>
-                    Light
-                  </button>
-                  <button onClick={() => setSelectedTheme("dark")}>Dark</button>
+                  {themes.map((theme, i) => (
+                    <div className="theme-option-wrapper">
+                      <div className="theme-preview-wrapper">
+                        <AnimatePresence>
+                          {imgLoadedFlags[i] === false && (
+                            <motion.div
+                              className="skeleton-image"
+                              exit={{
+                                opacity: 0,
+                                transition: { duration: 0.2 },
+                              }}
+                            ></motion.div>
+                          )}
+                        </AnimatePresence>
+                        <motion.img
+                          src={theme.preview}
+                          alt={theme.alt}
+                          onLoad={() => handleLoadImage(i)}
+                        />
+                      </div>
+                      <Sparkles
+                        showOnlyOnHover
+                        hidden={selectedTheme === theme.name}
+                      >
+                        <IconButton
+                          className={`icon 
+                        }`}
+                          onClick={() => setSelectedTheme(theme)}
+                        >
+                          {selectedTheme.name === theme.name ? (
+                            <ImRadioChecked />
+                          ) : (
+                            <ImRadioUnchecked />
+                          )}
+                        </IconButton>
+                      </Sparkles>
+                    </div>
+                  ))}
                 </div>
               )}
               {settings[selectedSetting] === "Searchbar" && (
