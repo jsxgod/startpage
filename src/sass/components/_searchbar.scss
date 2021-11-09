@@ -2,18 +2,52 @@
   grid-area: searchbar;
   .searchbar-container {
     padding: 1rem;
+    padding-left: 0;
     width: 100%;
     height: 100%;
     display: flex;
     align-items: center;
+    .searchbar-options {
+      display: flex;
+      align-items: center;
+      background-color: var(--searchbar-options-bg-color);
+      border-radius: 1rem;
+      padding: 4px;
+      height: 100%;
+      margin-right: 1rem;
+      .searchbar-option-icon-button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: none;
+        background-color: transparent;
+        font-size: 3rem;
+        color: var(--searchbar-option-icon-color);
+        margin-right: 1rem;
+        &:disabled {
+          cursor: default;
+        }
+        &.reddit {
+          color: #ff5700;
+          clip-path: circle(23px at center);
+          background-color: $white;
+        }
+
+        &.stackOverflow > * {
+          fill: #f48024;
+        }
+        &.pdf > * {
+          fill: #f40f02;
+        }
+      }
+    }
     .searchbar-engine-icon-button {
       display: flex;
       justify-content: center;
       align-items: center;
       border: none;
-      background-color: inherit;
+      background-color: transparent;
       font-size: 3rem;
-      margin-right: 1rem;
       &.googleScholar {
         color: #a0c3ff;
       }
@@ -21,54 +55,27 @@
         color: #e37151;
       }
     }
-    .searchbar-input {
-      padding: 1rem;
-      padding-left: 0;
-      width: 100%;
-      color: var(--main-text-color);
-      font-family: MontSerrat;
-      font-size: 2rem;
-      border: none;
-      border-bottom: 1px solid var(--dark-lighten-10);
-      transition: 0.2s ease-in-out;
-      background-color: inherit;
-      &::placeholder {
-        color: var(--dark-lighten-10);
-      }
-      &:focus {
-        outline: none;
-        border-bottom: 1px solid var(--input-highlight);
-        &::placeholder {
-          color: var(--dark-lighten-20);
-        }
-      }
-      &:hover {
-        border-bottom: 1px solid var(--input-highlight);
-      }
+  }
+  .searchbar-input {
+    padding: 1rem;
+    padding-left: 0;
+    width: 100%;
+    height: 100%;
+    color: var(--searchbar-input-text-color);
+    font-family: MontSerrat;
+    font-size: 2rem;
+    border: none;
+    border-bottom: 1px solid var(--searchbar-input-highlight);
+    transition: 0.2s ease-in-out;
+    background-color: inherit;
+    &::placeholder {
+      color: var(--searchbar-input-placeholder);
     }
-    .searchbar-option-icon-button {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border: none;
-      background-color: inherit;
-      font-size: 3rem;
-      color: var(--icon-not-selected-color);
-      margin-right: 1rem;
-      &:disabled {
-        cursor: default;
-      }
-      &.reddit {
-        color: #ff5700;
-        clip-path: circle(23px at center);
-        background-color: $white;
-      }
-
-      &.stackOverflow > * {
-        fill: #f48024;
-      }
-      &.pdf > * {
-        fill: #f40f02;
+    &:focus {
+      outline: none;
+      border-bottom: 1px solid var(--searchbar-input-highlight-focus);
+      &::placeholder {
+        color: var(--searchbar-input-placeholder-focus);
       }
     }
   }
