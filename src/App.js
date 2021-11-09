@@ -6,9 +6,9 @@ function App() {
   const [settingsOpened, setSettingsOpened] = useState(false);
 
   useEffect(() => {
-    const theme = localStorage.getItem("theme");
+    const theme = JSON.parse(localStorage.getItem("theme"));
     theme 
-      ? document.documentElement.setAttribute("data-theme", theme)
+      ? document.documentElement.setAttribute("data-theme", theme.name)
       : document.documentElement.setAttribute("data-theme", "dark");
   }, [])
   return (
