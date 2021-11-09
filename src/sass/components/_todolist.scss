@@ -28,14 +28,14 @@
         padding-left: 0;
         margin: 0 2rem;
         border: none;
-        border-bottom: 1px solid var(--dark-lighten-10);
+        border-bottom: 1px solid var(--input-highlight);
         transition: border-bottom 0.2s ease-in-out;
         &:focus {
           outline: none;
-          border-bottom: 1px solid var(--input-highlight);
+          border-bottom: 1px solid var(--input-highlight-focus);
         }
         &::placeholder {
-          color: var(--dark-lighten-20);
+          color: var(--input-placeholder);
         }
         &.alert {
           border-bottom: 1px solid $red;
@@ -82,7 +82,7 @@
               border: none;
             }
             .group-selection-close-button {
-              color: var(--icon-not-selected-color);
+              color: var(--group-selection-close-btn-color);
               position: absolute;
               font-size: 1rem;
               top: 5px;
@@ -106,14 +106,14 @@
       overflow-y: scroll;
       &::-webkit-scrollbar {
         width: 8px;
-        background-color: darken($white, 40);
+        background-color: var(--scrollbar-bg-color);
         border-radius: 100px;
       }
       &::-webkit-scrollbar-thumb {
-        background-color: $white;
+        background-color: var(--scrollbar-thumb-color);
         border-radius: 100px;
       }
-      scrollbar-color: $white darken($white, 40);
+      scrollbar-color: var(--scrollbar-thumb-color) var(--scrollbar-bg-color);
       scrollbar-width: thin;
       height: 28rem;
       .groups-sidebar-option-wrapper {
@@ -147,14 +147,14 @@
     padding-right: 0;
     &::-webkit-scrollbar {
       width: 8px;
-      background-color: darken($white, 40);
+      background-color: var(--scrollbar-bg-color);
       border-radius: 100px;
     }
     &::-webkit-scrollbar-thumb {
-      background-color: $white;
+      background-color: var(--scrollbar-thumb-color);
       border-radius: 100px;
     }
-    scrollbar-color: $white darken($white, 40);
+    scrollbar-color: var(--scrollbar-thumb-color) var(--scrollbar-bg-color);
     scrollbar-width: thin;
     scrollbar-track-color: darken($white, 40);
     .todo-row {
@@ -209,11 +209,11 @@
             border: none;
             resize: none;
 
-            border-bottom: 1px solid var(--dark-lighten-10);
+            border-bottom: 1px solid var(--input-highlight);
             transition: border-bottom 0.2s ease-in-out;
             &:focus {
               outline: none;
-              border-bottom: 1px solid var(--input-highlight);
+              border-bottom: 1px solid var(--input-highlight-focus);
             }
             &::placeholder {
               color: $gray;
