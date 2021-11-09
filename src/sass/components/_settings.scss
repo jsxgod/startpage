@@ -1,14 +1,17 @@
 .settings {
   position: absolute;
-  top: 2.5vh;
-  left: 5vw;
+  top: 0;
+  width: 100%;
+  padding: 2.5vh 5vw;
+  background-color: rgba(100, 100, 100, 0.6);
   z-index: 100;
+
   .settings-wrapper {
     position: relative;
     width: 90vw;
     height: 95vh;
     background-color: var(--settings-bg-color);
-    border: 5px solid var(--main-color);
+    border: 5px solid var(--settings-border-color);
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -18,8 +21,9 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background-color: var(--main-color);
+      background-color: var(--settings-border-color);
       .settings-title {
+        color: var(--contrast-text-color);
         font-size: 1.1rem;
         position: absolute;
         left: 0.25rem;
@@ -31,7 +35,7 @@
         display: flex;
         justify-content: space-between;
         .settings-option {
-          color: var(--secondary-text-color);
+          color: var(--contrast-text-color);
           font-size: 1.2rem;
           background-color: inherit;
           display: flex;
@@ -54,9 +58,10 @@
           display: flex;
           justify-content: center;
           align-items: center;
+          border: none;
           border-radius: 10px;
           .close-icon {
-            color: $black;
+            color: var(--close-settings-btn-color);
             font-size: 1rem;
           }
         }
@@ -68,7 +73,8 @@
       grid-template-rows: 9fr 1fr;
       row-gap: 1rem;
       position: relative;
-      height: 100%;
+      min-height: 100%;
+      max-height: 100%;
       padding: 2rem;
       .links-editor-wrapper {
         grid-area: setting-area;
@@ -76,19 +82,22 @@
         height: 100%;
         margin-bottom: 1rem;
         .links-editor {
-          color: var(--main-text-color);
+          color: var(--settings-text-color);
           width: 100%;
           height: 100%;
           overflow-y: scroll;
-
+          border: 1px solid var(--main-text-color);
           &::-webkit-scrollbar {
             width: 8px;
             background-color: var(--scrollbar-bg-color);
+            border-radius: 100px;
           }
           &::-webkit-scrollbar-thumb {
             background-color: var(--scrollbar-thumb-color);
+            border-radius: 100px;
           }
-          scrollbar-color: $white darken($white, 40);
+          scrollbar-color: var(--scrollbar-thumb-color)
+            var(--scrollbar-bg-color);
           scrollbar-width: thin;
           resize: none;
           z-index: -2;
@@ -98,9 +107,55 @@
         }
       }
       .theme-settings-wrapper {
-        color: var(--main-text-color);
+        color: var(--settings-text-color);
         grid-area: setting-area;
-        display: grid;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-content: flex-start;
+        flex-wrap: wrap;
+        overflow-y: scroll;
+        &::-webkit-scrollbar {
+          width: 8px;
+          background-color: var(--scrollbar-bg-color);
+          border-radius: 100px;
+        }
+        &::-webkit-scrollbar-thumb {
+          background-color: var(--scrollbar-thumb-color);
+          border-radius: 100px;
+        }
+        scrollbar-color: var(--scrollbar-thumb-color) var(--scrollbar-bg-color);
+        scrollbar-width: thin;
+        .theme-option-wrapper {
+          padding: 1rem;
+          flex: 0 0 calc(50%);
+          display: flex;
+          justify-content: space-around;
+          align-items: center;
+          .theme-preview-wrapper {
+            position: relative;
+            width: 700px;
+            height: 338px;
+            border-radius: 20px;
+            overflow: hidden;
+            img {
+              position: absolute;
+              width: 700px;
+              pointer-events: none;
+              z-index: 1;
+            }
+            .skeleton-image {
+              position: absolute;
+              background-color: var(--skeleton-image-loading-color);
+              width: 100%;
+              height: 100%;
+              pointer-events: none;
+              z-index: 2;
+            }
+          }
+          .theme-button {
+          }
+        }
       }
       .searchbar-settings-wrapper {
         color: var(--main-text-color);
@@ -132,13 +187,13 @@
             padding-left: 3rem;
             .forward-search-input {
               outline: none;
-              color: var(--main-text-color);
+              color: var(--settings-text-color);
               background-color: inherit;
-              border: 1px solid var(--main-color);
+              border: 1px solid var(--settings-border-color);
               font-family: MontSerrat;
               padding: 0 1rem;
               &::placeholder {
-                color: var(--main-text-color-darken);
+                color: var(--fs-input-placeholder);
               }
             }
           }
@@ -149,14 +204,18 @@
             align-content: flex-start;
             flex-wrap: wrap;
             overflow-y: scroll;
+            color: var(--settings-text-color);
             &::-webkit-scrollbar {
               width: 8px;
               background-color: var(--scrollbar-bg-color);
+              border-radius: 100px;
             }
             &::-webkit-scrollbar-thumb {
               background-color: var(--scrollbar-thumb-color);
+              border-radius: 100px;
             }
-            scrollbar-color: $white darken($white, 40);
+            scrollbar-color: var(--scrollbar-thumb-color)
+              var(--scrollbar-bg-color);
             scrollbar-width: thin;
             .forward-search-value-wrapper {
               height: 64px;
@@ -183,7 +242,7 @@
             font-size: 1.2rem;
 
             &:disabled {
-              color: var(--dark-lighten-20);
+              color: var(--fs-plus-disabled);
               cursor: default;
             }
           }
@@ -207,7 +266,7 @@
           height: 3rem;
           border-radius: 10px;
           background-color: var(--settings-btn-bg-color);
-          color: var(--secondary-text-color);
+          color: var(--contrast-text-color);
           transition: background-color 0.2s ease-in-out;
           &:hover {
             background-color: var(--settings-btn-hover-bg-color);
