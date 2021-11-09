@@ -22,30 +22,53 @@ $flickerLeft: $neonGreen;
 $flickerRight: $neonPink;
 
 :root {
+  // MAIN
   --bg-color: #131313;
-  --settings-bg-color: #1d1d1d;
   --widget-bg-color: #181818;
   --widget-border-color: #131313;
-  --main-color: #ececec;
   --main-text-color: #ececec;
   --main-text-color-darken: #bcbcbc;
-  --secondary-text-color: #131313;
+  --contrast-text-color: #131313;
   --link-color: #ececec;
   --text-accent-1: #75fa69;
   --text-accent-2: #ea36af;
+  --icon-bg-color: transparent;
   --icon-not-selected-color: #ececec;
-  --dark: #1d1d1d;
-  --dark-lighten-10: #333333;
-  --dark-lighten-20: #4a4a4a;
-  --input-highlight: #ececec;
-  --scrollbar-bg-color: #8d8d8d;
-  --scrollbar-thumb-color: #ececec;
-  --settings-btn-bg-color: #ececec;
-  --settings-btn-hover-bg-color: #bcbcbc;
+
+  // SEARCHBAR
+  --searchbar-input-text-color: #ececec;
+  --searchbar-options-bg-color: inherit;
+  --searchbar-option-icon-color: #ececec;
+  --searchbar-input-highlight: #4a4a4a;
+  --searchbar-input-highlight-focus: #ececec;
+  --searchbar-input-placeholder: #333333;
+  --searchbar-input-placeholder-focus: #4a4a4a;
+
+  // TODO LIST
+  --todo-description-bg-color: inherit;
+  --input-highlight: #4a4a4a;
+  --input-highlight-focus: #ececec;
+  --input-placeholder: #4a4a4a;
+  --group-selection-bg-color: #131313;
+  --group-selection-close-btn-color: #ececec;
+
+  // SETTINGS
+  --settings-text-color: #ffffff;
   --settings-open-btn-color: #ececec;
   --settings-open-btn-hover-color: #bcbcbc;
-  --group-selection-bg-color: #131313;
-  --todo-description-bg-color: inherit;
+  --settings-bg-color: #1d1d1d;
+  --skeleton-image-loading-color: #333333;
+  --settings-border-color: #ececec; // prev MAIN COLOR var
+  --settings-btn-bg-color: #ececec;
+  --settings-btn-hover-bg-color: #bcbcbc;
+  --fs-input-placeholder: #bcbcbc;
+  --fs-plus-disabled: #4a4a4a;
+
+  // SCROLLBAR
+  --scrollbar-bg-color: #181818;
+  --scrollbar-thumb-color: #bcbcbc;
+
+  // 3D ICON BOX
   --box-shadow: 0px 3px 15px rgba(0, 0, 0, 1);
   --drop-shadow: drop-shadow(3px 3px 2px rgba(0, 0, 0, 0.7));
 
@@ -58,30 +81,55 @@ $flickerRight: $neonPink;
 }
 
 [data-theme="light"] {
+  // MAIN
   --bg-color: #ececec;
-  --settings-bg-color: #f3f3f3;
   --widget-bg-color: #dfe3ee;
   --widget-border-color: #1d1d1d;
-  --main-color: #1d1d1d;
   --main-text-color: #1d1d1d;
-  --main-text-color-darken: #bcbcbc; //
-  --secondary-text-color: #f3f3f3;
+  --contrast-text-color: #f3f3f3;
+  --icon-bg-color: transparent;
+  --icon-not-selected-color: #1d1d1d;
+
+  // SEARCHBAR
+  --searchbar-input-text-color: #1d1d1d;
+  --searchbar-options-bg-color: inherit;
+  --searchbar-option-icon-color: #1d1d1d;
+  --searchbar-input-highlight: #bcbcbc;
+  --searchbar-input-highlight-focus: #131313;
+  --searchbar-input-placeholder: #bcbcbc;
+  --searchbar-input-placeholder-focus: #4a4a4a;
+
+  // TODO LIST
+  --todo-description-bg-color: inherit;
+  --input-highlight: #bcbcbc;
+  --input-highlight-focus: #131313;
+  --input-placeholder: #bcbcbc;
+  --group-selection-bg-color: #ececec;
+  --group-selection-close-btn-color: #1d1d1d;
+
+  // LINK LIST
+  --main-text-color-darken: #bcbcbc;
   --link-color: #1d1d1d;
   --text-accent-1: #ff0000;
   --text-accent-2: #00ffff;
-  --icon-not-selected-color: #1d1d1d;
-  --dark: #131313;
-  --dark-lighten-10: #bcbcbc;
-  --dark-lighten-20: #4a4a4a;
-  --input-highlight: #131313;
-  --scrollbar-bg-color: #8d8d8d;
-  --scrollbar-thumb-color: #f3f3f3;
-  --settings-btn-bg-color: #1d1d1d;
-  --settings-btn-hover-bg-color: #2d2d2d;
+
+  // SETTINGS
+  --settings-text-color: #131313;
   --settings-open-btn-color: #1d1d1d;
   --settings-open-btn-hover-color: #3d3d3d;
-  --group-selection-bg-color: #ececec;
-  --todo-description-bg-color: inherit;
+  --close-settings-btn-color: #f3f3f3;
+  --settings-bg-color: #f3f3f3;
+  --settings-border-color: #1d1d1d;
+  --settings-btn-bg-color: #1d1d1d;
+  --settings-btn-hover-bg-color: #2d2d2d;
+  --fs-input-placeholder: #1d1d1d;
+  --fs-plus-disabled: #8d8d8d;
+
+  // SCROLLBAR
+  --scrollbar-bg-color: #dfe3ee;
+  --scrollbar-thumb-color: #bcbcbc;
+
+  // 3D ICON BOX
   --box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
   --drop-shadow: drop-shadow(1px 0px 0px rgba(0, 0, 0, 0.2));
 
@@ -92,5 +140,370 @@ $flickerRight: $neonPink;
     }
 
     box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+  }
+}
+
+[data-theme="nihon"] {
+  // MAIN
+  --bg-color: #eb5e53;
+  --widget-bg-color: #e8ebd3;
+  --widget-border-color: #1d1d1d;
+  --main-text-color: #403836;
+  --contrast-text-color: #f3f3f3;
+  --icon-bg-color: transparent;
+  --icon-not-selected-color: #403836;
+
+  // SEARCHBAR
+  --searchbar-input-text-color: #e8ebd3;
+  --searchbar-options-bg-color: #e8ebd3;
+  --searchbar-option-icon-color: #403836;
+  --searchbar-input-highlight: #403836;
+  --searchbar-input-highlight-focus: #e8ebd3;
+  --searchbar-input-placeholder: #403836;
+  --searchbar-input-placeholder-focus: #403836;
+
+  // TODO LIST
+  --todo-description-bg-color: inherit;
+  --input-highlight: #bcbcbc;
+  --input-highlight-focus: #131313;
+  --input-placeholder: #bcbcbc;
+  --group-selection-bg-color: #ececec;
+  --group-selection-close-btn-color: #1d1d1d;
+
+  // LINK LIST
+  --main-text-color-darken: #d3dfeb;
+  --link-color: #403836;
+  --text-accent-1: #d97652;
+  --text-accent-2: #590202;
+
+  // SETTINGS
+  --settings-text-color: #e8ebd3;
+  --settings-open-btn-color: #e8ebd3;
+  --settings-open-btn-hover-color: #d7ddb4;
+  --close-settings-btn-color: #f3f3f3;
+  --settings-bg-color: #d97652;
+  --settings-border-color: #403836;
+  --settings-btn-bg-color: #403836;
+  --settings-btn-hover-bg-color: #2d2d2d;
+  --fs-input-placeholder: #1d1d1d;
+  --fs-plus-disabled: #8d8d8d;
+
+  // SCROLLBAR
+  --scrollbar-bg-color: #e8ebd3;
+  --scrollbar-thumb-color: #403836;
+
+  // 3D ICON BOX
+  --box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+  --drop-shadow: drop-shadow(1px 0px 0px rgba(0, 0, 0, 0.2));
+}
+
+[data-theme="mono-dark"] {
+  // MAIN
+  --bg-color: #131313;
+  --widget-bg-color: #ececec;
+  --widget-border-color: #131313;
+  --main-text-color: #131313;
+  --main-text-color-darken: #131313;
+  --contrast-text-color: #ececec;
+  --link-color: #131313;
+  --text-accent-1: #131313;
+  --text-accent-2: #131313;
+  --icon-bg-color: transparent;
+  --icon-not-selected-color: #131313;
+
+  // SEARCHBAR
+  --searchbar-input-text-color: #ececec;
+  --searchbar-options-bg-color: inherit;
+  --searchbar-option-icon-color: #ececec;
+  --searchbar-input-highlight: #4a4a4a;
+  --searchbar-input-highlight-focus: #ececec;
+  --searchbar-input-placeholder: #333333;
+  --searchbar-input-placeholder-focus: #4a4a4a;
+
+  // TODO LIST
+  --todo-description-bg-color: inherit;
+  --input-highlight: #bcbcbc;
+  --input-highlight-focus: #131313;
+  --input-placeholder: #4a4a4a;
+  --group-selection-bg-color: #bcbcbc;
+  --group-selection-close-btn-color: #131313;
+
+  // SETTINGS
+  --settings-text-color: #111111;
+  --settings-open-btn-color: #ececec;
+  --settings-open-btn-hover-color: #bcbcbc;
+  --close-settings-btn-color: #ececec;
+  --settings-bg-color: #ececec;
+  --settings-border-color: #1d1d1d;
+  --settings-btn-bg-color: #131313;
+  --settings-btn-hover-bg-color: #232323;
+  --fs-input-placeholder: #4a4a4a;
+  --fs-plus-disabled: #4a4a4a;
+
+  // SCROLLBAR
+  --scrollbar-bg-color: #ececec;
+  --scrollbar-thumb-color: #4a4a4a;
+
+  // 3D ICON BOX
+  --box-shadow: none;
+  --drop-shadow: none;
+
+  .icon {
+    > * {
+      color: #131313;
+    }
+  }
+
+  .todo-description-wrapper {
+    outline: 4px solid black;
+  }
+}
+
+[data-theme="mono-light"] {
+  // MAIN
+  --bg-color: #ececec;
+  --widget-bg-color: #131313;
+  --widget-border-color: #131313;
+  --main-text-color: #ececec;
+  --main-text-color-darken: #ececec;
+  --contrast-text-color: #131313;
+  --link-color: #ececec;
+  --text-accent-1: #ececec;
+  --text-accent-2: #ececec;
+  --icon-bg-color: transparent;
+  --icon-not-selected-color: #ececec;
+
+  // SEARCHBAR
+  --searchbar-input-text-color: #131313;
+  --searchbar-options-bg-color: inherit;
+  --searchbar-option-icon-color: #131313;
+  --searchbar-input-highlight: #4a4a4a;
+  --searchbar-input-highlight-focus: #131313;
+  --searchbar-input-placeholder: #333333;
+  --searchbar-input-placeholder-focus: #4a4a4a;
+
+  // TODO LIST
+  --todo-description-bg-color: inherit;
+  --input-highlight: #bcbcbc;
+  --input-highlight-focus: #ececec;
+  --input-placeholder: #4a4a4a;
+  --group-selection-bg-color: #181818;
+  --group-selection-close-btn-color: #ececec;
+
+  // SETTINGS
+  --settings-text-color: #ffffff;
+  --settings-open-btn-color: #131313;
+  --settings-open-btn-hover-color: #232323;
+  --close-settings-btn-color: #1d1d1d;
+  --settings-bg-color: #1d1d1d;
+  --settings-border-color: #ebebeb;
+  --settings-btn-bg-color: #ececec;
+  --settings-btn-hover-bg-color: #bebebe;
+  --fs-input-placeholder: #bebebe;
+  --fs-plus-disabled: #4a4a4a;
+
+  // SCROLLBAR
+  --scrollbar-bg-color: #131313;
+  --scrollbar-thumb-color: #bebebe;
+
+  // 3D ICON BOX
+  --box-shadow: none;
+  --drop-shadow: none;
+
+  .icon {
+    > * {
+      color: #ececec;
+    }
+  }
+
+  .todo-description-wrapper {
+    outline: 4px solid white;
+  }
+}
+
+[data-theme="japanese-tree"] {
+  // MAIN
+  --bg-color: #7dbcc5;
+  --widget-bg-color: #e0e0e0;
+  --widget-border-color: #1d1d1d;
+  --main-text-color: #c98e70;
+  --contrast-text-color: #ffffff;
+  --icon-bg-color: transparent;
+  --icon-not-selected-color: #5e5e5e;
+
+  // SEARCHBAR
+  --searchbar-input-text-color: #e0e0e0;
+  --searchbar-options-bg-color: inherit;
+  --searchbar-option-icon-color: #e0e0e0;
+  --searchbar-input-highlight: #4a4a4a;
+  --searchbar-input-highlight-focus: #e0e0e0;
+  --searchbar-input-placeholder: #333333;
+  --searchbar-input-placeholder-focus: #4a4a4a;
+
+  // TODO LIST
+  --todo-description-bg-color: inherit;
+  --input-highlight: #bcbcbc;
+  --input-highlight-focus: #c98e70;
+  --input-placeholder: #bcbcbc;
+  --group-selection-bg-color: #ececec;
+  --group-selection-close-btn-color: #5e5e5e;
+
+  // LINK LIST
+  --main-text-color-darken: #d3dfeb;
+  --link-color: #000000;
+  --text-accent-1: #c98e70;
+  --text-accent-2: #7dbcc5;
+
+  // SETTINGS
+  --settings-text-color: #ffffff;
+  --settings-open-btn-color: #e0e0e0;
+  --settings-open-btn-hover-color: #bebebe;
+  --close-settings-btn-color: #ffffff;
+  --settings-bg-color: #7dbcc5;
+  --settings-border-color: #c98e70;
+  --settings-btn-bg-color: #c98e70;
+  --settings-btn-hover-bg-color: #d19e85;
+  --fs-input-placeholder: #ffffff;
+  --fs-plus-disabled: #8d8d8d;
+
+  // SCROLLBAR
+  --scrollbar-bg-color: #e0e0e0;
+  --scrollbar-thumb-color: #bebebe;
+
+  // 3D ICON BOX
+  --box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+  --drop-shadow: drop-shadow(1px 0px 0px rgba(0, 0, 0, 0.2));
+
+  .icon {
+    > * {
+      -webkit-filter: var(--drop-shadow);
+      filter: var(--drop-shadow);
+    }
+  }
+}
+
+[data-theme="purple-haze"] {
+  // MAIN
+  --bg-color: #44317f;
+  --widget-bg-color: #5d43af;
+  --widget-border-color: #1d1d1d;
+  --main-text-color: #00ff66;
+  --contrast-text-color: #ffffff;
+  --icon-bg-color: transparent;
+  --icon-not-selected-color: #ececec;
+
+  // SEARCHBAR
+  --searchbar-input-text-color: #00ff66;
+  --searchbar-options-bg-color: inherit;
+  --searchbar-option-icon-color: #e0e0e0;
+  --searchbar-input-highlight: #bcbcbc;
+  --searchbar-input-highlight-focus: #00ff66;
+  --searchbar-input-placeholder: #a9a9a9;
+  --searchbar-input-placeholder-focus: #bcbcbc;
+
+  // TODO LIST
+  --todo-description-bg-color: inherit;
+  --input-highlight: #bcbcbc;
+  --input-highlight-focus: #00ff66;
+  --input-placeholder: #bcbcbc;
+  --group-selection-bg-color: #44317f;
+  --group-selection-close-btn-color: #ececec;
+
+  // LINK LIST
+  --main-text-color-darken: #229873;
+  --link-color: #ececec;
+  --text-accent-1: #ffea00;
+  --text-accent-2: #42a5f5;
+
+  // SETTINGS
+  --settings-text-color: #ffffff;
+  --settings-open-btn-color: #7a63c3;
+  --settings-open-btn-hover-color: #9482ce;
+  --close-settings-btn-color: #ffffff;
+  --settings-bg-color: #5d43af;
+  --settings-border-color: #44317f;
+  --settings-btn-bg-color: #00cc51;
+  --settings-btn-hover-bg-color: #00ff66;
+  --fs-input-placeholder: #ffffff;
+  --fs-plus-disabled: #8d8d8d;
+
+  // SCROLLBAR
+  --scrollbar-bg-color: #5d43af;
+  --scrollbar-thumb-color: #44317f;
+
+  // 3D ICON BOX
+  --box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.5);
+  --drop-shadow: drop-shadow(1px 0px 0px rgba(0, 0, 0, 0.2));
+
+  .icon {
+    > * {
+      -webkit-filter: var(--drop-shadow);
+      filter: var(--drop-shadow);
+    }
+  }
+
+  .todo-description-wrapper {
+    outline: 4px solid #336579;
+  }
+}
+
+[data-theme="koi-pond"] {
+  // MAIN
+  --bg-color: #034730;
+  --widget-bg-color: #eccbc6;
+  --widget-border-color: #1d1d1d;
+  --main-text-color: #e36e42;
+  --contrast-text-color: #ffffff;
+  --icon-bg-color: transparent;
+  --icon-not-selected-color: #69502f;
+
+  // SEARCHBAR
+  --searchbar-input-text-color: #eccbc6;
+  --searchbar-options-bg-color: inherit;
+  --searchbar-option-icon-color: #eccbc6;
+  --searchbar-input-highlight: #5e5e5e;
+  --searchbar-input-highlight-focus: #eccbc6;
+  --searchbar-input-placeholder: #5e5e5e;
+  --searchbar-input-placeholder-focus: #e1ada5;
+
+  // TODO LIST
+  --todo-description-bg-color: inherit;
+  --input-highlight: #bcbcbc;
+  --input-highlight-focus: #e36e42;
+  --input-placeholder: #bcbcbc;
+  --group-selection-bg-color: #ececec;
+  --group-selection-close-btn-color: #5e5e5e;
+
+  // LINK LIST
+  --main-text-color-darken: #b2441a;
+  --link-color: #000000;
+  --text-accent-1: #034730;
+  --text-accent-2: #69502f;
+
+  // SETTINGS
+  --settings-text-color: #69502f;
+  --settings-open-btn-color: #eccbc6;
+  --settings-open-btn-hover-color: #d68f84;
+  --close-settings-btn-color: #ffffff;
+  --settings-bg-color: #eccbc6;
+  --settings-border-color: #034730;
+  --settings-btn-bg-color: #69502f;
+  --settings-btn-hover-bg-color: #8e6c3f;
+  --fs-input-placeholder: #69502f;
+  --fs-plus-disabled: #8d8d8d;
+
+  // SCROLLBAR
+  --scrollbar-bg-color: #eccbc6;
+  --scrollbar-thumb-color: #d68f84;
+
+  // 3D ICON BOX
+  --box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+  --drop-shadow: drop-shadow(1px 0px 0px rgba(0, 0, 0, 0));
+
+  .icon {
+    > * {
+      -webkit-filter: var(--drop-shadow);
+      filter: var(--drop-shadow);
+    }
   }
 }
