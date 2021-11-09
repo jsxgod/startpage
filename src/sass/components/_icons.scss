@@ -7,13 +7,16 @@
   border-radius: 10px;
   width: 2.5rem;
   height: 2.5rem;
-  background-color: inherit;
+  background-color: var(--icon-bg-color);
   color: var(--icon-not-selected-color);
   // todo input related
   &.group-select {
     color: $purple;
   }
   &.group-select-alert {
+    > * {
+      color: red;
+    }
     color: $red;
     scale: 1.1;
   }
@@ -25,6 +28,9 @@
   }
   &.important-button-selected {
     color: $orange;
+    > * {
+      color: $orange;
+    }
   }
   &.selected {
   }
@@ -38,11 +44,14 @@
     color: $red;
   }
   &.edit {
-    color: var(--main-color);
+    color: var(--icon-not-selected-color);
   }
   &.update {
     color: $green;
     margin-right: 1rem;
+    > * {
+      color: $green;
+    }
   }
   &.cancel {
     margin-right: 1rem;
@@ -54,6 +63,9 @@
   // group selection on click
   &.selected {
     color: $green;
+    > * {
+      color: $green;
+    }
   }
 
   // todo sidebar
