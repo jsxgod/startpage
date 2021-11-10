@@ -194,7 +194,7 @@ const ToDoList = () => {
     <div className="todo-list">
       <div className="todo-input-container">
         <div className="todo-input-wrapper">
-          <Sparkles hidden={todoInput === ""}>
+          <Sparkles hidden={todoInput === ""} minSize={15} maxSize={25}>
             <input
               type="text"
               value={todoInput}
