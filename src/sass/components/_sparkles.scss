@@ -3,7 +3,6 @@
   position: relative;
   display: inline-block;
   &.on-hover {
-    padding: 12px;
     .sparkle-wrapper {
       transition: opacity 1s ease-in-out;
       opacity: 0;
