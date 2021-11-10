@@ -1,10 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { CloseButton, Sparkles } from "./";
-import {
-  BsArrowRightSquare as LeftArrow,
-  BsArrowLeftSquare as RightArrow,
-  BsPlusLg,
-} from "react-icons/bs";
+import { BsPlusLg } from "react-icons/bs";
 import { ImRadioChecked, ImRadioUnchecked } from "react-icons/im";
 import { FaSave, FaFire, FaTrashAlt, FaBomb } from "react-icons/fa";
 import { AnimatePresence, motion } from "framer-motion";
