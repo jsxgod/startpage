@@ -104,6 +104,11 @@ const Settings = ({ opened, openSettings }) => {
     }
   };
 
+  const handleCloseResetAllScreen = () => {
+    setResetClicks(0);
+    setShowResetAllSettingsConfirmation(false);
+  };
+
   return (
     <>
       {opened && (
@@ -120,7 +125,7 @@ const Settings = ({ opened, openSettings }) => {
                   <div className="close-reset-all-button-wrapper">
                     <button
                       className="reset-all-button"
-                      onClick={() => setShowResetAllSettingsConfirmation(false)}
+                      onClick={() => handleCloseResetAllScreen()}
                     >
                       X
                     </button>
