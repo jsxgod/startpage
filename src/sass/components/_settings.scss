@@ -115,6 +115,8 @@
         align-content: flex-start;
         flex-wrap: wrap;
         overflow-y: scroll;
+        overflow-x: hidden;
+        padding-bottom: 40px;
         &::-webkit-scrollbar {
           width: 8px;
           background-color: var(--scrollbar-bg-color);
@@ -141,8 +143,15 @@
             img {
               position: absolute;
               width: 700px;
-              pointer-events: none;
               z-index: 1;
+              &:hover {
+                cursor: pointer;
+              }
+              &.selected {
+                &:hover {
+                  cursor: default;
+                }
+              }
             }
             .skeleton-image {
               position: absolute;
