@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import { Sparkle } from ".";
 import { random, range, useRandomInterval } from "../utilities";
 
-const generateSparkle = () => {
+const generateSparkle = (color, minSize, maxSize) => {
   return {
     id: String(random(10000, 99999)),
     timeStamp: Date.now(),
-    color: "#FFC700",
-    size: random(10, 20),
+    color: color,
+    size: random(minSize, maxSize),
     style: {
       top: random(0, 100) + "%",
       left: random(0, 95) + "%",
@@ -21,16 +21,19 @@ const Sparkles = ({
   showOnlyOnHover,
   hidden,
   showOnlyOnFocusWithin,
+  color = "#FFC700",
+  minSize = 10,
+  maxSize = 20,
 }) => {
   const [sparkles, setSparkles] = useState(() => {
-    return range(3).map(() => generateSparkle());
+    return range(3).map(() => generateSparkle(color, minSize, maxSize));
   });
 
   useRandomInterval(
     () => {
       if (!hidden) {
         const now = Date.now();
-        const newSparkle = generateSparkle();
+        const newSparkle = generateSparkle(color, minSize, maxSize);
         const newSparkles = sparkles.filter((s) => {
           const delta = now - s.timeStamp;
           return delta < 1000;
