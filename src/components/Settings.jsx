@@ -126,24 +126,37 @@ const Settings = ({ opened, openSettings }) => {
                 <div className="theme-settings-wrapper">
                   {themes.map((theme, i) => (
                     <div className="theme-option-wrapper">
-                      <div className="theme-preview-wrapper">
-                        <AnimatePresence>
-                          {imgLoadedFlags[i] === false && (
-                            <motion.div
-                              className="skeleton-image"
-                              exit={{
-                                opacity: 0,
-                                transition: { duration: 0.2 },
-                              }}
-                            ></motion.div>
-                          )}
-                        </AnimatePresence>
-                        <motion.img
-                          src={theme.preview}
-                          alt={theme.alt}
-                          onLoad={() => handleLoadImage(i)}
-                        />
-                      </div>
+                      <Sparkles
+                        minSize={30}
+                        maxSize={50}
+                        showOnlyOnHover
+                        hidden={selectedTheme.name === theme.name}
+                      >
+                        <div className="theme-preview-wrapper">
+                          <AnimatePresence>
+                            {imgLoadedFlags[i] === false && (
+                              <motion.div
+                                className="skeleton-image"
+                                exit={{
+                                  opacity: 0,
+                                  transition: { duration: 0.2 },
+                                }}
+                              ></motion.div>
+                            )}
+                          </AnimatePresence>
+                          <motion.img
+                            src={theme.preview}
+                            alt={theme.alt}
+                            onLoad={() => handleLoadImage(i)}
+                            onClick={() => setSelectedTheme(theme)}
+                            className={`${
+                              selectedTheme.name === theme.name
+                                ? "selected"
+                                : ""
+                            }`}
+                          />
+                        </div>
+                      </Sparkles>
                       <Sparkles
                         showOnlyOnHover
                         hidden={selectedTheme.name === theme.name}
