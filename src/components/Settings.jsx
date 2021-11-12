@@ -12,9 +12,7 @@ const Settings = ({ opened, openSettings }) => {
   const [selectedSetting, setSelectedSetting] = useState(0);
   const [linksEditorData, setLinksEditorData] = useState(() => {
     const localLinksData = localStorage.getItem("links");
-    return localLinksData
-      ? JSON.stringify(JSON.parse(localLinksData), null, 2)
-      : '[\n\t{\n\t"title":\t"TITLE",\n"links": [{}]}]';
+    return localLinksData ? JSON.parse(localLinksData) : [];
   });
   const [forwardSearchEditorData, setForwardSearchEditorData] = useState(() => {
     const localForwardSearchData = localStorage.getItem("forward-search");
@@ -35,6 +33,13 @@ const Settings = ({ opened, openSettings }) => {
   ] = useState(false);
   const [confirmationInput, setConfirmationInput] = useState("");
   const [resetClicks, setResetClicks] = useState(0);
+  const [selectedLinksSection, setSelectedLinksSection] = useState(() => {
+    const localLinksData = localStorage.getItem("links");
+    return localLinksData ? JSON.parse(localLinksData)[0].title : "";
+  });
+  const [newSectionInputValue, setNewSectionInputValue] = useState("");
+  const [newLabelInputValue, setNewLabelInputValue] = useState("");
+  const [newLinkInputValue, setNewLinkInputValue] = useState("");
 
   const handleSaveSettings = () => {
     try {
@@ -103,6 +108,29 @@ const Settings = ({ opened, openSettings }) => {
   const handleCloseResetAllScreen = () => {
     setResetClicks(0);
     setShowResetAllSettingsConfirmation(false);
+  };
+
+  const handleAddNewLinksSection = () => {};
+
+  const handleAddNewLink = () => {
+    const shallow_copy = [...linksEditorData];
+    const idx = [...linksEditorData].findIndex(
+      (section) => section.title === selectedLinksSection
+    );
+    if (idx !== -1) {
+      shallow_copy[idx].links.push({
+        label: newLabelInputValue.trim(),
+        value: newLinkInputValue.trim(),
+      });
+      setLinksEditorData(shallow_copy);
+    }
+  };
+
+  const getLinks = () => {
+    const temp = linksEditorData.find(
+      (section) => section.title === selectedLinksSection
+    );
+    return temp ? temp.links : undefined;
   };
 
   return (
@@ -217,14 +245,61 @@ const Settings = ({ opened, openSettings }) => {
               <div className="setting-area">
                 {settings[selectedSetting] === "Links" && (
                   <div className="links-editor-wrapper">
-                    <textarea
-                      spellCheck="false"
-                      className="links-editor"
-                      value={linksEditorData}
-                      onChange={(event) =>
-                        setLinksEditorData(event.target.value)
-                      }
-                    ></textarea>
+                    <div className="select-link-section-wrapper">
+                      <select
+                        value={selectedLinksSection}
+                        onChange={(event) =>
+                          setSelectedLinksSection(event.target.value)
+                        }
+                      >
+                        {linksEditorData.map((section) => (
+                          <option value={section.title}>{section.title}</option>
+                        ))}
+                      </select>
+                      <input
+                        type="text"
+                        value={newSectionInputValue}
+                        onChange={(event) =>
+                          setNewSectionInputValue(event.target.value)
+                        }
+                      />
+                      <button
+                        className="forward-search-button"
+                        onClick={() => handleAddNewLinksSection()}
+                        disabled={newSectionInputValue === ""}
+                      >
+                        <BsPlusLg />
+                      </button>
+                      <input
+                        type="text"
+                        value={newLabelInputValue}
+                        onChange={(event) =>
+                          setNewLabelInputValue(event.target.value)
+                        }
+                      />
+                      <input
+                        type="text"
+                        value={newLinkInputValue}
+                        onChange={(event) =>
+                          setNewLinkInputValue(event.target.value)
+                        }
+                      />
+                      <button
+                        className="forward-search-button"
+                        onClick={() => handleAddNewLink()}
+                        disabled={
+                          newLabelInputValue === "" || newLinkInputValue === ""
+                        }
+                      >
+                        <BsPlusLg />
+                      </button>
+                    </div>
+                    <div className="links-editor">
+                      <div className="links-container">
+                        {getLinks() !== undefined &&
+                          getLinks().map((link) => <span>{link.label}</span>)}
+                      </div>
+                    </div>
                   </div>
                 )}
                 {settings[selectedSetting] === "Theme" && (
