@@ -34,8 +34,8 @@ const Settings = ({ opened, openSettings }) => {
   const [confirmationInput, setConfirmationInput] = useState("");
   const [resetClicks, setResetClicks] = useState(0);
   const [selectedLinksSection, setSelectedLinksSection] = useState(() => {
-    const firstSection = JSON.parse(localStorage.getItem("links"))[0];
-    return firstSection ? firstSection.title : "";
+    const links = JSON.parse(localStorage.getItem("links"));
+    return links ? links[0]?.title : "";
   });
   const [newSectionInputValue, setNewSectionInputValue] = useState("");
   const [newLabelInputValue, setNewLabelInputValue] = useState("");
@@ -44,7 +44,7 @@ const Settings = ({ opened, openSettings }) => {
   const handleSaveSettings = () => {
     try {
       //JSON.parse(linksEditorData);
-      //localStorage.setItem("links", linksEditorData);
+      localStorage.setItem("links", JSON.stringify(linksEditorData));
       localStorage.setItem(
         "forward-search",
         JSON.stringify(forwardSearchEditorData)
@@ -101,7 +101,8 @@ const Settings = ({ opened, openSettings }) => {
     if (resetClicks < 3) {
       setResetClicks((resetClicks) => resetClicks + 1);
     } else {
-      alert("FULL RESET");
+      localStorage.clear();
+      window.location.reload();
     }
   };
 
