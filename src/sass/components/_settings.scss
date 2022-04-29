@@ -80,13 +80,100 @@
         grid-area: setting-area;
         width: 100%;
         height: 100%;
-        margin-bottom: 1rem;
+        display: grid;
+        grid-template-rows: 1fr 1fr 4fr;
+        .select-link-section-wrapper {
+          display: flex;
+          align-items: center;
+          .section-select {
+            border: none;
+            background-color: inherit;
+            border: 1px solid var(--settings-border-color);
+            color: var(--settings-text-color);
+            height: 50%;
+            width: 300px;
+            font-family: MontSerratBlack;
+            font-size: 1.5rem;
+            margin-right: 2rem;
+            option {
+              background-color: var(--settings-border-color);
+              color: var(--contrast-text-color);
+              border-radius: 20px;
+            }
+          }
+          .section-input {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: inherit;
+            font-size: 1rem;
+            padding: 4px 1rem;
+            color: var(--settings-text-color);
+            border: 1px solid var(--settings-border-color);
+            outline: none;
+            height: 50%;
+            width: 300px;
+            margin: 0 2rem;
+            &::placeholder {
+              color: var(--fs-input-placeholder);
+            }
+          }
+          .section-add-button {
+            color: var(--main-text-color);
+            background-color: inherit;
+            border: none;
+            font-size: 1.2rem;
+
+            &:disabled {
+              color: var(--fs-plus-disabled);
+              cursor: default;
+            }
+          }
+        }
+        .add-new-link-wrapper {
+          display: flex;
+          align-items: center;
+          .link-input {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: inherit;
+            font-size: 1rem;
+            padding: 0 1rem;
+            color: var(--settings-text-color);
+            border: 1px solid var(--settings-border-color);
+            outline: none;
+            height: 50%;
+            width: 300px;
+            margin: 0 2rem;
+            &:first-of-type {
+              margin-left: 0;
+            }
+            &::placeholder {
+              color: var(--fs-input-placeholder);
+            }
+          }
+          .link-add-button {
+            color: var(--main-text-color);
+            background-color: inherit;
+            border: none;
+            font-size: 1.2rem;
+
+            &:disabled {
+              color: var(--fs-plus-disabled);
+              cursor: default;
+            }
+          }
+        }
         .links-editor {
           color: var(--settings-text-color);
           width: 100%;
-          height: 100%;
+          max-height: 450px;
           overflow-y: scroll;
           border: 1px solid var(--main-text-color);
+          font-size: 1.1rem;
+          outline: none;
+          background-color: inherit;
           &::-webkit-scrollbar {
             width: 8px;
             background-color: var(--scrollbar-bg-color);
@@ -99,11 +186,35 @@
           scrollbar-color: var(--scrollbar-thumb-color)
             var(--scrollbar-bg-color);
           scrollbar-width: thin;
-          resize: none;
-          z-index: -2;
-          font-size: 1.1rem;
-          outline: none;
-          background-color: inherit;
+
+          .links-container {
+            display: flex;
+            flex-direction: column;
+            padding: 1rem;
+            max-height: 100%;
+            width: 100%;
+            overflow-y: scroll;
+            &::-webkit-scrollbar {
+              width: 8px;
+              background-color: var(--scrollbar-bg-color);
+              border-radius: 100px;
+            }
+            &::-webkit-scrollbar-thumb {
+              background-color: var(--scrollbar-thumb-color);
+              border-radius: 100px;
+            }
+            scrollbar-color: var(--scrollbar-thumb-color)
+              var(--scrollbar-bg-color);
+            scrollbar-width: thin;
+            .link-wrapper {
+              width: fit-content;
+              margin-bottom: 1rem;
+              font-family: MontSerratExtraLight;
+              &:hover {
+                cursor: pointer;
+              }
+            }
+          }
         }
       }
       .theme-settings-wrapper {
