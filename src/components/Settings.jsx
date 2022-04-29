@@ -34,8 +34,8 @@ const Settings = ({ opened, openSettings }) => {
   const [confirmationInput, setConfirmationInput] = useState("");
   const [resetClicks, setResetClicks] = useState(0);
   const [selectedLinksSection, setSelectedLinksSection] = useState(() => {
-    const localLinksData = localStorage.getItem("links");
-    return localLinksData ? JSON.parse(localLinksData)[0].title : "";
+    const firstSection = JSON.parse(localStorage.getItem("links"))[0];
+    return firstSection ? firstSection.title : "";
   });
   const [newSectionInputValue, setNewSectionInputValue] = useState("");
   const [newLabelInputValue, setNewLabelInputValue] = useState("");
@@ -43,8 +43,8 @@ const Settings = ({ opened, openSettings }) => {
 
   const handleSaveSettings = () => {
     try {
-      JSON.parse(linksEditorData);
-      localStorage.setItem("links", linksEditorData);
+      //JSON.parse(linksEditorData);
+      //localStorage.setItem("links", linksEditorData);
       localStorage.setItem(
         "forward-search",
         JSON.stringify(forwardSearchEditorData)
@@ -110,7 +110,24 @@ const Settings = ({ opened, openSettings }) => {
     setShowResetAllSettingsConfirmation(false);
   };
 
-  const handleAddNewLinksSection = () => {};
+  const handleAddNewLinksSection = () => {
+    if (
+      !linksEditorData.find((section) => section.title === newSectionInputValue)
+    ) {
+      const newLinkSection = {
+        title: newSectionInputValue,
+        links: [],
+      };
+      setLinksEditorData((linksEditorData) => [
+        ...linksEditorData,
+        newLinkSection,
+      ]);
+      setSelectedLinksSection(newLinkSection.title);
+      setNewSectionInputValue("");
+    } else {
+      alert("section already exists");
+    }
+  };
 
   const handleAddNewLink = () => {
     const shallow_copy = [...linksEditorData];
@@ -248,6 +265,7 @@ const Settings = ({ opened, openSettings }) => {
                     <div className="select-link-section-wrapper">
                       <select
                         value={selectedLinksSection}
+                        className="section-select"
                         onChange={(event) =>
                           setSelectedLinksSection(event.target.value)
                         }
@@ -259,20 +277,26 @@ const Settings = ({ opened, openSettings }) => {
                       <input
                         type="text"
                         value={newSectionInputValue}
+                        placeholder="new section"
+                        className="section-input"
                         onChange={(event) =>
                           setNewSectionInputValue(event.target.value)
                         }
                       />
                       <button
-                        className="forward-search-button"
+                        className="section-add-button"
                         onClick={() => handleAddNewLinksSection()}
                         disabled={newSectionInputValue === ""}
                       >
                         <BsPlusLg />
                       </button>
+                    </div>
+                    <div className="add-new-link-wrapper">
                       <input
                         type="text"
                         value={newLabelInputValue}
+                        placeholder="new link label"
+                        className="link-input"
                         onChange={(event) =>
                           setNewLabelInputValue(event.target.value)
                         }
@@ -280,12 +304,14 @@ const Settings = ({ opened, openSettings }) => {
                       <input
                         type="text"
                         value={newLinkInputValue}
+                        placeholder="new link destination"
+                        className="link-input"
                         onChange={(event) =>
                           setNewLinkInputValue(event.target.value)
                         }
                       />
                       <button
-                        className="forward-search-button"
+                        className="link-add-button"
                         onClick={() => handleAddNewLink()}
                         disabled={
                           newLabelInputValue === "" || newLinkInputValue === ""
@@ -297,7 +323,9 @@ const Settings = ({ opened, openSettings }) => {
                     <div className="links-editor">
                       <div className="links-container">
                         {getLinks() !== undefined &&
-                          getLinks().map((link) => <span>{link.label}</span>)}
+                          getLinks().map((link) => (
+                            <span className="link-wrapper">{link.label}</span>
+                          ))}
                       </div>
                     </div>
                   </div>
