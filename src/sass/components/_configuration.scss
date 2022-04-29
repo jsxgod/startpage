@@ -1,0 +1,18 @@
+.configuration-wrapper {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  .configuration-title {
+    font-size: 3rem;
+  }
+  .configuration-elements-wrapper {
+    display: flex;
+
+    .configuration-element {
+      padding: 2rem 1rem;
+    }
+  }
+}
