@@ -35,14 +35,29 @@ const Searchbar = () => {
     localStorage.setItem("engine", JSON.stringify(engine));
   }, [engine]);
 
-  const handleSearch = () => {
-    const fs = JSON.parse(localStorage.getItem("forward-search")).filter(
-      (f) => f.search === searchbarInput
-    )[0];
+  const getValidURL = (url) => {
+    const isValid = ["http://", "https://", "ftp://"].some((protocol) =>
+      url.startsWith(protocol)
+    );
+    return isValid ? url : "https://" + url;
+  };
 
-    if (fs) {
-      console.log(fs.destination);
-      window.location.href = "https://" + fs.destination;
+  const handleSearch = () => {
+    const forwardSearchOptions = JSON.parse(
+      localStorage.getItem("forward-search")
+    );
+
+    let match = false;
+    let fs = null;
+    if (forwardSearchOptions) {
+      fs = forwardSearchOptions.filter((f) => f.search === searchbarInput);
+      if (fs[0]) {
+        match = true;
+      }
+    }
+
+    if (match) {
+      window.location.href = getValidURL(fs[0].destination);
     } else {
       if (engine.name === "googleScholar") {
         window.location.href = engine.queryURL + searchbarInput;
