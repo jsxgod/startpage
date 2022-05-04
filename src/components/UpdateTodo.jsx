@@ -29,13 +29,13 @@ const UpdateTodo = ({
         }}
       >
         <div className="update-input-wrapper">
-          <input
+          <textarea
             type="text"
             value={updateInput}
             placeholder={todo.description}
             className={`update-input ${alertInput ? "alert" : ""}`}
             onChange={(event) => setUpdateInput(event.target.value)}
-          ></input>
+          ></textarea>
         </div>
       </div>
       <div className="update-actions-container">
