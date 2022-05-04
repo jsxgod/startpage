@@ -10,6 +10,8 @@ import {
 } from "react-icons/bs";
 
 const Todo = ({
+  as,
+  enableDrag,
   todo,
   handleChangeImportant,
   handleCompleteTodo,
@@ -20,12 +22,13 @@ const Todo = ({
   history,
 }) => {
   const theme = JSON.parse(localStorage.getItem("theme"));
+  const Component = as || "div";
   return (
-    <div className="todo-row">
+    <Component className="todo-row" value={todo} dragListener={enableDrag}>
       <div
         className={`todo-description-wrapper ${
           theme ? (theme.mono === "true" ? "mono" : "") : ""
-        }`}
+        } ${enableDrag ? "grab" : ""}`}
         style={{
           border: theme
             ? theme.mono === "true"
@@ -89,7 +92,7 @@ const Todo = ({
           </IconButton>
         </div>
       )}
-    </div>
+    </Component>
   );
 };
 
