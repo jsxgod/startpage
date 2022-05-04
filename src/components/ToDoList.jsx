@@ -51,7 +51,7 @@ const ToDoList = () => {
     const group = selectedInputGroup;
     const todo = {
       key: todoInput.trim(),
-      description: todoInput.trim(),
+      description: todoInput,
       group: group,
       important: importantInput,
       history: "",
