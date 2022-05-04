@@ -306,7 +306,7 @@ const Settings = ({ opened, openSettings }) => {
                       <input
                         type="text"
                         value={newSectionInputValue}
-                        placeholder="new section"
+                        placeholder="add new section"
                         className="section-input"
                         onChange={(event) =>
                           setNewSectionInputValue(event.target.value)
