@@ -256,9 +256,12 @@ const ToDoList = () => {
           <AnimatePresence>
             {groupSelectionOpened && (
               <motion.div
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                exit={{ scale: 0, transition: { duration: 0.1 } }}
+                  initial={{ scale: 0.8 }}
+                  animate={{
+                    scale: 1.05,
+                    transition: { duration: 0.3, type: "spring" },
+                  }}
+                  exit={{ opacity: 0, transition: { duration: 0.1 } }}
                 className="group-selection-wrapper"
               >
                 <div className="group-selection-container">
