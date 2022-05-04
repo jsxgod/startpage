@@ -357,9 +357,23 @@ const Settings = ({ opened, openSettings }) => {
                     </div>
                     <div className="links-editor">
                       <div className="links-container">
-                        {getLinks() !== undefined &&
-                          getLinks().map((link) => (
-                            <span className="link-wrapper">{link.label}</span>
+                        {getLinks()?.map((link, i) => (
+                          <div
+                            key={"link-" + i + "-" + link?.label}
+                            className="link-wrapper"
+                          >
+                            <span className="link-label">
+                              {i + ". " + link?.label}
+                            </span>
+                            <span className="separator">:</span>
+                            <span className="link-value">{link?.value}</span>
+                            <button
+                              className="remove-link-button"
+                              onClick={() => handleRemoveLink(link)}
+                            >
+                              <FaTrashAlt className="settings-button-icon" />
+                            </button>
+                          </div>
                           ))}
                       </div>
                     </div>
