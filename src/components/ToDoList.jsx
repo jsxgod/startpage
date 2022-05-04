@@ -185,7 +185,7 @@ const ToDoList = () => {
     if (!checkDuplicateDescription(updateInput)) {
       const idx = findTodoIndex(todo);
       todos[idx].key = updateInput.trim();
-      todos[idx].description = updateInput.trim();
+      todos[idx].description = updateInput;
       todos[idx].editMode = false;
       setTodos((todos) => [...todos]);
     } else {
