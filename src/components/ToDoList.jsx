@@ -240,79 +240,68 @@ const ToDoList = () => {
               <BsExclamationCircleFill />
             </IconButton>
           </div>
-        <div className="todo-button-wrapper select-group">
-          <IconButton
-            className={`icon ${
-              alertGroup ? "group-select-alert" : "group-select"
-            }`}
-            onClick={() => setGroupSelectionOpened(true)}
-          >
-            {Object.keys(selectedInputGroup).length !== 0 ? (
-              selectedInputGroup.icon
-            ) : (
-              <BsFillBookmarkPlusFill />
-            )}
-          </IconButton>
-          <AnimatePresence>
-            {groupSelectionOpened && (
-              <motion.div
+          <div className="todo-button-wrapper select-group">
+            <IconButton
+              className={`icon ${
+                alertGroup ? "group-select-alert" : "group-select"
+              }`}
+              onClick={() => setGroupSelectionOpened(true)}
+            >
+              {Object.keys(selectedInputGroup).length !== 0 ? (
+                selectedInputGroup.icon
+              ) : (
+                <BsFillBookmarkPlusFill />
+              )}
+            </IconButton>
+            <AnimatePresence>
+              {groupSelectionOpened && (
+                <motion.div
                   initial={{ scale: 0.8 }}
                   animate={{
                     scale: 1.05,
                     transition: { duration: 0.3, type: "spring" },
                   }}
                   exit={{ opacity: 0, transition: { duration: 0.1 } }}
-                className="group-selection-wrapper"
-              >
-                <div className="group-selection-container">
-                  {groups.slice(1).map((g) => (
-                    <div
-                      key={`${g.name}+-input-option`}
-                      className="group-item-wrapper"
-                    >
-                      <IconButton
-                        className={`icon ${
-                          selectedInputGroup.name === g.name ? "selected" : ""
-                        }`}
-                        onClick={() => {
-                          setSelectedInputGroup(g);
-                            setGroupSelectionOpened(false);
-                          setAlertGroup(false);
-                        }}
+                  className="group-selection-wrapper"
+                >
+                  <div className="group-selection-container">
+                    {groups.slice(1).map((g) => (
+                      <div
+                        key={`${g.name}+-input-option`}
+                        className="group-item-wrapper"
                       >
-                        {g.icon}
-                      </IconButton>
-                    </div>
-                  ))}
-                  <button
-                    className="group-selection-close-button"
-                    onClick={() => {
-                      setGroupSelectionOpened(false);
-                    }}
-                  >
-                    <RiCloseCircleFill />
-                  </button>
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
+                        <IconButton
+                          className={`icon ${
+                            selectedInputGroup.name === g.name ? "selected" : ""
+                          }`}
+                          onClick={() => {
+                            setSelectedInputGroup(g);
+                            setGroupSelectionOpened(false);
+                            setAlertGroup(false);
+                          }}
+                        >
+                          {g.icon}
+                        </IconButton>
+                      </div>
+                    ))}
+                    <button
+                      className="group-selection-close-button"
+                      onClick={() => {
+                        setGroupSelectionOpened(false);
+                      }}
+                    >
+                      <RiCloseCircleFill />
+                    </button>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
           <div className="todo-button-wrapper add">
             <IconButton className="icon add" onClick={handleAddTodo}>
-            <BsPlusCircleFill />
-          </IconButton>
-        </div>
-        <div
-          className="todo-button-wrapper important"
-          onClick={() => setImportantInput(!importantInput)}
-        >
-          <IconButton
-            className={`icon ? ${
-              importantInput ? "important-button-selected" : "important-button"
-            }`}
-          >
-            <BsExclamationCircleFill />
-          </IconButton>
+              <BsPlusCircleFill />
+            </IconButton>
+          </div>
         </div>
       </div>
       <div className="groups-sidebar">
