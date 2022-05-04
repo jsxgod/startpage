@@ -8,11 +8,11 @@
   background-color: var(--widget-bg-color);
   border-radius: 2rem;
   box-shadow: var(--box-shadow);
+  padding-bottom: 2rem;
   .todo-input-container {
     grid-area: todo-input;
-    display: grid;
-    grid-template-areas: "input important-button select-group add";
-    grid-template-columns: 7fr 1fr 1fr 1fr;
+    display: flex;
+    justify-content: space-between;
     .todo-input-wrapper {
       .todo-input {
         position: relative;
@@ -30,6 +30,7 @@
         border: none;
         border-bottom: 1px solid var(--input-highlight);
         transition: border-bottom 0.2s ease-in-out;
+        width: 100%;
         &:focus {
           outline: none;
           border-bottom: 1px solid var(--input-highlight-focus);
@@ -42,53 +43,57 @@
         }
       }
     }
-    .todo-button-wrapper {
-      padding: 1rem;
-      width: 100%;
-      height: 100%;
+    .todo-buttons-container {
       display: flex;
       justify-content: center;
       align-items: center;
-      font-size: 2rem;
-      &.add {
-        grid-area: add;
-        color: #00c853;
-      }
-      &.select-group {
-        grid-area: select-group;
-        position: relative;
-        color: $purple;
-        .group-selection-wrapper {
-          position: absolute;
-          z-index: 50;
-          top: -20px;
-          left: -50px;
-          width: calc(100% + 40px);
-          .group-selection-container {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            border-radius: 10px;
-            padding: 1rem;
-            background-color: var(--group-selection-bg-color);
-            display: grid;
-            .group-item-wrapper {
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              width: 4.5rem;
-              height: 4rem;
+      z-index: 2;
+      .todo-button-wrapper {
+        padding: 1rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2rem;
+        &.add {
+          grid-area: add;
+          color: #00c853;
+        }
+        &.select-group {
+          grid-area: select-group;
+          position: relative;
+          color: $purple;
+          .group-selection-wrapper {
+            position: absolute;
+            z-index: 50;
+            top: -20px;
+            left: -50px;
+            width: calc(100% + 40px);
+            .group-selection-container {
+              position: relative;
+              width: 100%;
+              height: 100%;
+              border-radius: 10px;
+              padding: 1rem;
+              background-color: var(--group-selection-bg-color);
+              display: grid;
+              .group-item-wrapper {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 4.5rem;
+                height: 4rem;
 
-              border: none;
-            }
-            .group-selection-close-button {
-              color: var(--group-selection-close-btn-color);
-              position: absolute;
-              font-size: 1rem;
-              top: 5px;
-              right: 5px;
-              border: none;
-              background-color: transparent;
+                border: none;
+              }
+              .group-selection-close-button {
+                color: var(--group-selection-close-btn-color);
+                position: absolute;
+                font-size: 1rem;
+                top: 5px;
+                right: 5px;
+                border: none;
+                background-color: transparent;
+              }
             }
           }
         }
@@ -101,7 +106,7 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: right;
-    padding: 1rem 0;
+    padding-top: 1rem;
     .groups-sidebar-options-container {
       overflow-y: scroll;
       &::-webkit-scrollbar {
@@ -128,11 +133,17 @@
       }
     }
     .groups-sidebar-history-options-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
       .groups-sidebar-history-option-wrapper {
         display: flex;
         justify-content: center;
         align-items: center;
         margin-bottom: 1rem;
+        &:last-of-type {
+          margin-bottom: 0;
+        }
         .groups.sidebar-history-option {
           font-size: 2rem;
           color: $purple;
@@ -162,9 +173,10 @@
       justify-content: left;
       align-items: center;
       padding: 1rem;
+      padding-right: 0;
       min-height: 100px;
       .todo-description-wrapper {
-        background-color: var(--todo-description-bg-color);
+        background-color: var(--widget-bg-color);
         color: var(--main-text-color);
         width: 70%;
         min-height: 4rem;
@@ -177,6 +189,15 @@
         line-height: 1.3rem;
         margin-right: 1rem;
         box-shadow: var(--box-shadow);
+        &.grab {
+          &:hover {
+            cursor: grab;
+          }
+        }
+        p {
+          white-space: pre-wrap;
+          word-wrap: break-word;
+        }
         &.update {
           &:focus-within {
             animation: move-border 1s infinite linear;
@@ -202,12 +223,24 @@
             font-family: MontSerrat;
             padding: 0.5rem 0;
             width: 100%;
-            height: 100%;
+            height: 100px;
             color: var(--main-text-color);
             font-size: 1rem;
             background-color: var(--todo-description-bg-color);
             border: none;
-            resize: none;
+            resize: vertical;
+            &::-webkit-scrollbar {
+              width: 8px;
+              background-color: var(--scrollbar-bg-color);
+              border-radius: 100px;
+            }
+            &::-webkit-scrollbar-thumb {
+              background-color: var(--scrollbar-thumb-color);
+              border-radius: 100px;
+            }
+            scrollbar-color: var(--scrollbar-thumb-color)
+              var(--scrollbar-bg-color);
+            scrollbar-width: thin;
 
             border-bottom: 1px solid var(--input-highlight);
             transition: border-bottom 0.2s ease-in-out;
@@ -225,7 +258,6 @@
         }
       }
       .todo-actions-container {
-        width: 30%;
         display: flex;
         justify-content: space-evenly;
         align-items: center;
@@ -240,7 +272,7 @@
       .history-todo-actions-container {
         width: 30%;
         display: flex;
-        justify-content: left;
+        justify-content: flex-start;
         align-items: center;
         padding-left: 1rem;
       }
