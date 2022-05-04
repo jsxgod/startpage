@@ -6,6 +6,7 @@ import {
   BsTrashFill,
   BsPencilSquare,
   BsExclamationCircleFill,
+  BsArrowCounterclockwise,
 } from "react-icons/bs";
 
 const Todo = ({
@@ -14,6 +15,7 @@ const Todo = ({
   handleCompleteTodo,
   handleRemoveTodo,
   handleRemoveTodoCompletely,
+  handleBringBackTodo,
   handleEditTodo,
   history,
 }) => {
@@ -75,6 +77,14 @@ const Todo = ({
             onClick={() => handleRemoveTodoCompletely(todo)}
           >
             <BsTrashFill />
+          </IconButton>
+          <IconButton
+            className="icon back-arrow"
+            onClick={() =>
+              handleBringBackTodo({ ...todo, history: "" }, todo.history)
+            }
+          >
+            <BsArrowCounterclockwise />
           </IconButton>
         </div>
       )}
