@@ -53,8 +53,11 @@ const LinksList = () => {
   return (
     <div className="links-list">
       <div className="links-sections-container">
-        {links.map((section) => (
-          <div className="links-section-wrapper">
+        {links.map((section, i) => (
+          <div
+            key={"links-section-" + i + "-" + section?.title}
+            className="links-section-wrapper"
+          >
             <div className="section-title-wrapper">
               <button
                 className="section-button"
