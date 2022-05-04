@@ -1,5 +1,4 @@
 import {
-  
   BsHeartFill,
   BsStarFill,
   BsAlarmFill,
@@ -11,15 +10,11 @@ import {
   BsFillXCircleFill,
   BsFillPaletteFill,
   BsMusicNoteBeamed,
+  BsCart4,
 } from "react-icons/bs";
 
-import {
-  IoSchool,
-  IoHome,
-} from "react-icons/io5";
-import {
-  RiCarFill,
-} from "react-icons/ri";
+import { IoSchool, IoHome } from "react-icons/io5";
+import { RiCarFill } from "react-icons/ri";
 
 const bookmarks = [
   {
@@ -28,36 +23,38 @@ const bookmarks = [
     color: "#ff9800",
     selected: false,
   },
-  { name: "heart", 
-    icon: <BsHeartFill />, 
-    color: "#f48fb1",
-    selected: false,
-  },
+  { name: "heart", icon: <BsHeartFill />, color: "#f48fb1", selected: false },
   {
     name: "star",
     icon: <BsStarFill />,
     color: "#ffee58",
     selected: false,
   },
-  
+
   {
     name: "alarm",
     icon: <BsAlarmFill />,
     color: "#e57373",
     selected: false,
   },
-  
+
   {
     name: "work",
     icon: <BsBriefcaseFill />,
     color: "#455a64",
     selected: false,
   },
-  
+
   {
     name: "school",
     icon: <IoSchool />,
     color: "#b3e5fc",
+    selected: false,
+  },
+  {
+    name: "shopping",
+    icon: <BsCart4 />,
+    color: "#B388FF",
     selected: false,
   },
   {
@@ -104,20 +101,18 @@ const history = [
     icon: <BsCheckCircleFill />,
     color: "#00c853",
     selected: false,
-
   },
   {
     name: "removed",
     icon: <BsFillXCircleFill />,
     color: "#cf291d",
     selected: false,
-
-  }
+  },
 ];
 
 const availableGroups = {
   bookmarks,
-  history
-}
+  history,
+};
 
 export default availableGroups;
