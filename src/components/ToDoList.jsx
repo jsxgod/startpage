@@ -297,8 +297,8 @@ const ToDoList = () => {
             )}
           </AnimatePresence>
         </div>
-        <div className="todo-button-wrapper add" onClick={handleAddTodo}>
-          <IconButton className="icon add">
+          <div className="todo-button-wrapper add">
+            <IconButton className="icon add" onClick={handleAddTodo}>
             <BsPlusCircleFill />
           </IconButton>
         </div>
