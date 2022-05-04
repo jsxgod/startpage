@@ -294,8 +294,13 @@ const Settings = ({ opened, openSettings }) => {
                           setSelectedLinksSection(event.target.value)
                         }
                       >
-                        {linksEditorData.map((section) => (
-                          <option value={section.title}>{section.title}</option>
+                        {linksEditorData.map((section, i) => (
+                          <option
+                            key={"select-option-" + i + "-" + section}
+                            value={section.title}
+                          >
+                            {section.title}
+                          </option>
                         ))}
                       </select>
                       <input
