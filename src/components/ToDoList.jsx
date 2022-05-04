@@ -112,6 +112,25 @@ const ToDoList = () => {
     }
   };
 
+  const handleBringBackTodo = async (todo, history) => {
+    const isDuplicate = await checkDuplicate(todo.key);
+    if (!isDuplicate) {
+      if (history === "removed") {
+        setRemovedTodos((removedTodos) => [
+          ...removedTodos.filter((t) => t.key !== todo.key),
+        ]);
+      } else if (history === "completed") {
+        setCompletedTodos((completedTodos) => [
+          ...completedTodos.filter((t) => t.key !== todo.key),
+        ]);
+      }
+      setTodos((todos) => [...todos, todo]);
+      handleSelectGroup(todo.group);
+    } else {
+      alert("TODO already exists.");
+    }
+  };
+
   const handleSelectGroup = (group) => {
     // reset selection if some group was already selected
     resetSelection(group);
