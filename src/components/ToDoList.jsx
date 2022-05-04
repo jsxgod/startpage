@@ -227,6 +227,19 @@ const ToDoList = () => {
             />
           </Sparkles>
         </div>
+        <div className="todo-buttons-container">
+          <div className="todo-button-wrapper important">
+            <IconButton
+              className={`icon ? ${
+                importantInput
+                  ? "important-button-selected"
+                  : "important-button"
+              }`}
+              onClick={() => setImportantInput(!importantInput)}
+            >
+              <BsExclamationCircleFill />
+            </IconButton>
+          </div>
         <div className="todo-button-wrapper select-group">
           <IconButton
             className={`icon ${
