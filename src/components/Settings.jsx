@@ -151,6 +151,29 @@ const Settings = ({ opened, openSettings }) => {
     return temp ? temp.links : undefined;
   };
 
+  const handleRemoveLink = (link) => {
+    setLinksEditorData((previousState) => {
+      const temp = linksEditorData.find(
+        (section) => section.title === selectedLinksSection
+      );
+      const newTemp = {
+        ...temp,
+        links: temp.links.filter((l) => l !== link),
+      };
+      return previousState.map((section) =>
+        section.title === selectedLinksSection ? newTemp : section
+      );
+    });
+  };
+
+  const handleRemoveSection = () => {
+    setLinksEditorData((previousState) => {
+      return previousState.filter(
+        (section) => section?.title !== selectedLinksSection
+      );
+    });
+  };
+
   return (
     <>
       {opened && (
