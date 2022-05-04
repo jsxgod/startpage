@@ -7,7 +7,7 @@ import {
 import { RiCloseCircleFill } from "react-icons/ri";
 import availableGroups from "../data/todo-groups";
 import { IconButton, Sparkles, Todo, UpdateTodo } from ".";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, Reorder } from "framer-motion";
 
 const ToDoList = () => {
   const [todoInput, setTodoInput] = useState("");
@@ -336,7 +336,15 @@ const ToDoList = () => {
           ))}
         </div>
       </div>
-      <div className="todos-container" id="todos-container">
+      <Reorder.Group
+        as="div"
+        axis="y"
+        values={todos}
+        onReorder={setTodos}
+        layoutScroll
+        className="todos-container"
+        id="todos-container"
+      >
         {(Object.keys(selectedGroup).length !== 0
           ? selectedGroup.name === "important"
             ? todos.filter((t) => t.important === true)
@@ -357,6 +365,9 @@ const ToDoList = () => {
             />
           ) : (
             <Todo
+              as={Reorder.Item}
+              //disable drag when a todo category is selected to not delete items from the main list
+              enableDrag={!selectedGroup.hasOwnProperty("name")}
               key={t.key}
               todo={t}
               history={t.history}
@@ -365,10 +376,11 @@ const ToDoList = () => {
               handleEditTodo={handleEditTodo}
               handleChangeImportant={handleChangeImportant}
               handleRemoveTodoCompletely={handleRemoveTodoCompletely}
+              handleBringBackTodo={handleBringBackTodo}
             />
           )
         )}
-      </div>
+      </Reorder.Group>
     </div>
   );
 };
