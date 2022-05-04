@@ -276,6 +276,7 @@ const ToDoList = () => {
                         }`}
                         onClick={() => {
                           setSelectedInputGroup(g);
+                            setGroupSelectionOpened(false);
                           setAlertGroup(false);
                         }}
                       >
