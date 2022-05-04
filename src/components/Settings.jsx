@@ -319,6 +319,12 @@ const Settings = ({ opened, openSettings }) => {
                       >
                         <BsPlusLg />
                       </button>
+                      <button
+                        className="remove-section-button"
+                        onClick={() => handleRemoveSection()}
+                      >
+                        <FaTrashAlt className="remove-icon" />
+                      </button>
                     </div>
                     <div className="add-new-link-wrapper">
                       <input
