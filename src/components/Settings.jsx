@@ -374,7 +374,7 @@ const Settings = ({ opened, openSettings }) => {
                               <FaTrashAlt className="settings-button-icon" />
                             </button>
                           </div>
-                          ))}
+                        ))}
                       </div>
                     </div>
                   </div>
@@ -419,8 +419,7 @@ const Settings = ({ opened, openSettings }) => {
                           hidden={selectedTheme.name === theme.name}
                         >
                           <IconButton
-                            className={`icon 
-                        }`}
+                            className="icon"
                             onClick={() => setSelectedTheme(theme)}
                           >
                             {selectedTheme.name === theme.name ? (
