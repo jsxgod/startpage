@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./sass/main.scss";
 import {
   LinksList,
-  LoadingInfo,
+  Configuration,
   NavBar,
   Searchbar,
   ToDoList,
@@ -33,7 +33,7 @@ function App() {
           <Searchbar />
         </div>
       ) : (
-        <LoadingInfo setConfigurationFinished={setConfigurationFinished} />
+        <Configuration setConfigurationFinished={setConfigurationFinished} />
       )}
     </>
   );
