@@ -27,18 +27,19 @@ const Todo = ({
           theme ? (theme.mono === "true" ? "mono" : "") : ""
         }`}
         style={{
-          outline: history
-            ? history === "completed"
-              ? "4px solid #00c853"
-              : "4px solid #cf291d"
-            : theme
+          border: theme
             ? theme.mono === "true"
               ? ""
               : `4px solid ${todo.group.color}`
             : `4px solid ${todo.group.color}`,
+          borderBottom: history
+            ? history === "completed"
+              ? "4px solid #00c853"
+              : "4px solid #cf291d"
+            : `4px solid ${todo.group.color}`,
         }}
       >
-        {todo.description}
+        <p>{todo.description}</p>
       </div>
       {!history && (
         <div className="todo-actions-container">
