@@ -470,8 +470,11 @@ const Settings = ({ opened, openSettings }) => {
                         </button>
                       </div>
                       <div className="forward-search-values-container">
-                        {forwardSearchEditorData.map((fs) => (
-                          <div className="forward-search-value-wrapper">
+                        {forwardSearchEditorData.map((fs, i) => (
+                          <div
+                            key={"fs-" + i + "-" + fs.search}
+                            className="forward-search-value-wrapper"
+                          >
                             <span className="search-value">
                               {'"' + fs.search + '"'}
                             </span>
