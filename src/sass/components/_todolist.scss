@@ -9,6 +9,18 @@
   border-radius: 2rem;
   box-shadow: var(--box-shadow);
   padding-bottom: 2rem;
+
+  @media (max-width: 1366px) {
+    height: fit-content;
+    width: 90%;
+    transform: translateX(5%);
+    margin-bottom: 6rem;
+    height: 80vh;
+
+    @media (max-width: 425px) {
+      margin-bottom: 2rem;
+    }
+  }
   .todo-input-container {
     grid-area: todo-input;
     display: flex;
@@ -23,7 +35,7 @@
         background-color: inherit;
         font-size: 2rem;
         color: var(--main-text-color);
-        font-family: MontSerratBlack;
+        font-family: "MontSerratBlack";
         padding: 1rem;
         padding-left: 0;
         margin: 0 2rem;
@@ -220,7 +232,7 @@
         .update-input-wrapper {
           width: 100%;
           .update-input {
-            font-family: MontSerrat;
+            font-family: "MontSerrat";
             padding: 0.5rem 0;
             width: 100%;
             height: 100px;
