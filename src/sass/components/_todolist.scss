@@ -9,6 +9,7 @@
   border-radius: 2rem;
   box-shadow: var(--box-shadow);
   padding-bottom: 2rem;
+  overflow-y: hidden;
 
   @media (max-width: 1366px) {
     height: fit-content;
