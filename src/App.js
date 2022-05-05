@@ -15,6 +15,14 @@ function App() {
   });
 
   useEffect(() => {
+    const hours = new Date().getHours();
+    if (hours >= 5 && hours < 12) {
+      document.title = "Good morning";
+    } else if (hours >= 12 && hours < 18) {
+      document.title = "Good afternoon";
+    } else {
+      document.title = "Good evening";
+    }
     const theme = JSON.parse(localStorage.getItem("theme"));
     theme
       ? document.documentElement.setAttribute("data-theme", theme.name)
