@@ -64,7 +64,7 @@ const Configuration = ({ setConfigurationFinished }) => {
           editMode: false,
         },
         {
-          key: "Drag and drop to reorder todos (only on the main list)\n\nGroup various todos with the use of the orange important button.\n\ntip: drag the larger todo over the smaller one",
+          key: "Drag and drop to reorder todos (only on the main list).\n\nGroup various todos with the use of the orange important button.\n\ntip: drag the larger todo over the smaller one",
           description:
             "Drag and drop to reorder todos (only on the main list)\n\nGroup various todos with the use of the orange important button.\n\ntip: drag the larger todo over the smaller one",
           group: {
