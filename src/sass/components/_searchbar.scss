@@ -1,11 +1,20 @@
 .searchbar {
   grid-area: searchbar;
+  @media (max-width: 1366px) {
+    height: fit-content;
+    width: 95%;
+    transform: translateX(2.5%);
+  }
   .searchbar-container {
     padding: 1rem;
     padding-left: 0;
     width: 100%;
     height: 100%;
     display: flex;
+    @media (max-width: 425px) {
+      gap: 1rem;
+      flex-direction: column;
+    }
     align-items: center;
     .searchbar-options {
       display: flex;
@@ -62,7 +71,7 @@
     width: 100%;
     height: 100%;
     color: var(--searchbar-input-text-color);
-    font-family: MontSerrat;
+    font-family: "MontSerrat";
     font-size: 2rem;
     border: none;
     border-bottom: 1px solid var(--searchbar-input-highlight);
