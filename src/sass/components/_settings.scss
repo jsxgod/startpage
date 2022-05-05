@@ -42,7 +42,7 @@
           justify-content: center;
           align-items: center;
           &.selected {
-            font-family: MontSerratBlack;
+            font-family: "MontSerratBlack";
           }
           &:hover {
             cursor: pointer;
@@ -92,7 +92,7 @@
             color: var(--settings-text-color);
             height: 50%;
             width: 300px;
-            font-family: MontSerratBlack;
+            font-family: "MontSerratBlack";
             font-size: 1.5rem;
             margin-right: 2rem;
             option {
@@ -251,7 +251,7 @@
               width: 100%;
               padding: 8px;
               margin-bottom: 1rem;
-              font-family: MontSerratExtraLight;
+              font-family: "MontSerratExtraLight";
               .link-label {
                 display: flex;
                 justify-content: flex-start;
@@ -349,7 +349,7 @@
         grid-area: setting-area;
         display: grid;
         font-size: 1.2rem;
-        font-family: MontSerrat;
+        font-family: "MontSerrat";
         grid-template-areas: "forward" "forward";
         grid-template-columns: 1fr;
         row-gap: 2rem;
@@ -378,7 +378,7 @@
               background-color: inherit;
               border: none;
               border-bottom: 1px solid var(--fs-plus-disabled);
-              font-family: MontSerrat;
+              font-family: "MontSerrat";
               padding: 0 4px;
               transition: border-bottom 0.15s ease-in-out;
               &::placeholder {
@@ -391,7 +391,7 @@
           }
           .forward-search-values-container {
             grid-area: values;
-            font-family: MontSerratExtraLight;
+            font-family: "MontSerratExtraLight";
             display: grid;
             grid-template-columns: 1fr 1fr;
             column-gap: 10%;
@@ -420,7 +420,7 @@
               width: 100%;
               height: fit-content;
               padding: 1rem;
-              font-family: MontSerratExtraLight;
+              font-family: "MontSerratExtraLight";
               .search-value {
                 display: flex;
                 justify-content: left;
@@ -460,7 +460,7 @@
           display: flex;
           justify-content: space-evenly;
           align-items: center;
-          font-family: MontSerrat;
+          font-family: "MontSerrat";
           font-size: 1.1rem;
           width: 220px;
           height: 3rem;
@@ -514,14 +514,14 @@
         outline: none;
         color: $white;
         font-size: 3rem;
-        font-family: Nintendo;
+        font-family: "Nintendo";
       }
     }
     .title-wrapper {
       margin-bottom: 5rem;
       p {
         color: $white;
-        font-family: Nintendo;
+        font-family: "Nintendo";
         font-size: 6rem;
         line-height: 7rem;
       }
@@ -536,7 +536,7 @@
       p {
         width: fit-content;
         color: $white;
-        font-family: Nintendo;
+        font-family: "Nintendo";
         font-size: 5rem;
         white-space: nowrap;
         margin-right: 5rem;
@@ -547,7 +547,7 @@
         border-bottom: 1px solid $white;
         background-color: inherit;
         color: $white;
-        font-family: Nintendo;
+        font-family: "Nintendo";
         font-size: 5rem;
         padding: 1rem;
         transition: border 0.2s ease-in-out;
@@ -567,7 +567,7 @@
         outline: none;
         color: $white;
         font-size: 2rem;
-        font-family: Nintendo;
+        font-family: "Nintendo";
         width: 100px;
         height: 100px;
         padding: 12px 42px;
