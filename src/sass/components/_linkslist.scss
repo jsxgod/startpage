@@ -5,6 +5,12 @@
   box-shadow: var(--box-shadow);
   padding: 1rem;
   overflow-y: scroll;
+  @media (max-width: 1366px) {
+    height: fit-content;
+    margin: 4rem 0;
+    width: 90%;
+    transform: translateX(5%);
+  }
   &::-webkit-scrollbar {
     display: none;
   }
@@ -37,7 +43,7 @@
             -0.125rem 0 0.06rem var(--text-accent-1);
           font-size: 5rem;
           letter-spacing: 0.1rem;
-          font-family: MontSerratBlack;
+          font-family: "MontSerratBlack";
           &:hover {
             cursor: pointer;
             color: var(--main-text-color-darken);
@@ -70,7 +76,7 @@
         .link-wrapper {
           width: 100%;
           a {
-            font-family: MontSerratExtraLight;
+            font-family: "MontSerratExtraLight";
             font-size: 1.1rem;
             text-decoration: none;
             color: var(--link-color);
