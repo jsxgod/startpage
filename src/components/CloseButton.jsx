@@ -1,8 +1,5 @@
 import React from "react";
-import {
-  IoCloseSharp as CloseIcon,
-  IoCloseOutline as CloseIconOutline,
-} from "react-icons/io5";
+import { IoCloseSharp as CloseIcon } from "react-icons/io5";
 
 const CloseButton = ({ openSettings }) => {
   return (

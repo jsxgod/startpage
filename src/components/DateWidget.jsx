@@ -9,7 +9,6 @@ const DateWidget = () => {
       clearInterval(interval);
     };
   }, []);
-  const getDayName = (dayNumber) => {};
   return (
     <div className="date-widget-container">
       <div className="day-wrapper">

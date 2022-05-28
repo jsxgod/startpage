@@ -205,10 +205,6 @@ const ToDoList = () => {
     setTodos((todos) => [...todos]);
   };
 
-  const InputWrapper = ({ children }) => {
-    return todoInput === "" ? children : <Sparkles>{children}</Sparkles>;
-  };
-
   return (
     <div className="todo-list">
       <div className="todo-input-container">
