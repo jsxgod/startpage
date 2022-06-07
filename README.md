@@ -3,7 +3,7 @@
 Website serving as a browser's startpage / new tab page.</br> 
 Inspired by the amazing community of r/startpages.</br>
 ####
-Consists of three features: bookmarks organizer, todo list and a searchbar. The user can customize the saved links, group tasks by categories and switch between search engines. The searchbar also has toggleable add ons: reddit, stackoverflow or pdf search narrowing as well as fast forward searches that can be set in the options (e.g. typing yt can take you to youtube.com).
+Consists of three features: bookmarks organizer, todo list and a searchbar. The user can customize the saved links, group tasks by categories and switch between search engines. The searchbar also has toggleable add ons: reddit, stackoverflow or pdf search narrowing as well as fast forward searches that can be set in the options (e.g. typing yt can take you to youtube.com)
 
 ## Website
 The project is available [here 🌐](https://startpage-ksdev.netlify.app/).
